@@ -36,7 +36,7 @@ public:
     if (nullptr == aObject || nullptr == aName) {
       return E_INVALIDARG;
     }
-	  return aObject->GetDispID(CComBSTR(aName), Flags, &aRetVal);
+    return aObject->GetDispID(CComBSTR(aName), Flags, &aRetVal);
   }
 
   /// @brief Get the `VARIANT` for `aDispId` or an error.
@@ -51,8 +51,8 @@ public:
     }
     // NOTE: We empty the return value here in any case!
     VariantClear(&aRetVal);
-	  DISPPARAMS params = {nullptr, nullptr, 0, 0};
-	  HRESULT hr = aObject->InvokeEx(
+    DISPPARAMS params = {nullptr, nullptr, 0, 0};
+    HRESULT hr = aObject->InvokeEx(
       aDispId,
       LOCALE_USER_DEFAULT,
       DISPATCH_PROPERTYGET,
@@ -76,13 +76,13 @@ public:
       return E_INVALIDARG;
     }
     DISPID did = 0;
-	  HRESULT hr = GetDISPID(aObject, aName, did);
+    HRESULT hr = GetDISPID(aObject, aName, did);
     if (FAILED(hr)) {
       // In case of error store the error in return value
       VariantClear(&aRetVal);
       aRetVal.vt = VT_ERROR;
       aRetVal.scode = hr;
-		  return hr;
+      return hr;
     }
     if (aDispIdRet) {
       (*aDispIdRet) = did;
@@ -99,22 +99,22 @@ public:
     if (nullptr == aObject) {
       return E_INVALIDARG;
     }
-	  DISPID namedArgs[] = {DISPID_PROPERTYPUT};
-	  DISPPARAMS params = {&aValue, namedArgs, 1, 1};
+    DISPID namedArgs[] = {DISPID_PROPERTYPUT};
+    DISPPARAMS params = {&aValue, namedArgs, 1, 1};
     HRESULT hr = E_FAIL;
-	  if (aValue.vt == VT_UNKNOWN || aValue.vt == VT_DISPATCH || 
-		  (aValue.vt & VT_ARRAY) || (aValue.vt & VT_BYREF)) {
+    if (aValue.vt == VT_UNKNOWN || aValue.vt == VT_DISPATCH ||
+      (aValue.vt & VT_ARRAY) || (aValue.vt & VT_BYREF)) {
         // try `DISPATCH_PROPERTYPUTREF` first...
-			  hr = aObject->InvokeEx(
+        hr = aObject->InvokeEx(
           aDispId,
           LOCALE_USER_DEFAULT,
           DISPATCH_PROPERTYPUTREF,
           &params, NULL, NULL, NULL);
-	  }
+    }
     // if value is a basic type OR the firt `InvokeEx` failed...
     if (FAILED(hr)) {
       // ... try again with `DISPATCH_PROPERTYPUT`
-	    hr = aObject->InvokeEx(
+      hr = aObject->InvokeEx(
         aDispId,
         LOCALE_USER_DEFAULT,
         DISPATCH_PROPERTYPUT,
@@ -131,9 +131,9 @@ public:
       return E_INVALIDARG;
     }
     DISPID did = 0;
-	  HRESULT hr = GetDISPID(aObject, aName, did);
+    HRESULT hr = GetDISPID(aObject, aName, did);
     if (FAILED(hr)) {
-		  return hr;
+      return hr;
     }
     return Set(aObject, did, aValue);
   }
@@ -141,7 +141,7 @@ public:
 
 /// @brief  Typedef for `IDispatchEx` connector **creating** new properties.
 typedef _Connector<fdexNameEnsure> ConnectorCreate;
-  
+
 /// @brief  Typedef for `IDispatchEx` connector **not** creating new properties.
 typedef _Connector<0> ConnectorGet;
 

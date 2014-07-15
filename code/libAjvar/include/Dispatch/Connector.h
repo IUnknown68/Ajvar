@@ -57,12 +57,12 @@ public:
       return E_INVALIDARG;
     }
     DISPID did = 0;
-	  HRESULT hr = GetDISPID(aObject, aName, did);
+    HRESULT hr = GetDISPID(aObject, aName, did);
     if (FAILED(hr)) {
       VariantClear(&aRetVal);
       aRetVal.vt = VT_ERROR;
       aRetVal.scode = hr;
-		  return hr;
+      return hr;
     }
     if (aDispIdRet) {
       (*aDispIdRet) = did;
@@ -87,9 +87,9 @@ public:
       return E_INVALIDARG;
     }
     DISPID did = 0;
-	  HRESULT hr = GetDISPID(aObject, aName, did);
+    HRESULT hr = GetDISPID(aObject, aName, did);
     if (FAILED(hr)) {
-		  return hr;
+      return hr;
     }
     return Set(aObject, did, aValue);
   }

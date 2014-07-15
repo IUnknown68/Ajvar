@@ -76,7 +76,7 @@ public:
   }
 
   _Object(decltype(__nullptr)) throw()
-  {	
+  {
   }
 
   _Object(_Inout_opt_ TInterface * lp) throw() :
@@ -158,7 +158,7 @@ public:
     // call constructor
     ATL::CComVariant vt;
     DISPPARAMS params = {nullptr, nullptr, 0, 0};
-	  hr = p->InvokeEx(dispid, LOCALE_USER_DEFAULT, DISPATCH_CONSTRUCT,
+    hr = p->InvokeEx(dispid, LOCALE_USER_DEFAULT, DISPATCH_CONSTRUCT,
       &params, &vt, NULL, NULL);
     if (FAILED(hr)) {
       return nullptr;

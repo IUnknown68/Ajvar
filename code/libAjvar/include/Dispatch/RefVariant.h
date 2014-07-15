@@ -16,7 +16,7 @@ namespace Dispatch {
 /// @details A `RefVariant` is returned from `_Object` when
 /// querying a property. It can be used as lvalue in an assignment. It keeps a reference
 /// to the `_Object` (usually `IDispatch` or `IDispatchEx`) it belongs to and sets
-/// the value back on the interface when the assignment operator is called.  
+/// the value back on the interface when the assignment operator is called.
 /// Additionally it is a callable, in case the property is a function.
 /// It uses a `TConnector` to get / set the property.
 /// @tparam  TConnector The connector class to use. @See Ajvar::Dispatch::_Connector.
@@ -143,7 +143,7 @@ public:
       return E_UNEXPECTED;
     }
     DISPPARAMS params = {aArgs, nullptr, nArgCount, 0};
-	  return mObject->InvokeEx(
+    return mObject->InvokeEx(
       mDispId,
       LOCALE_USER_DEFAULT,
       DISPATCH_METHOD,
