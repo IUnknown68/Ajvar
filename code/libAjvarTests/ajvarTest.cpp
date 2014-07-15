@@ -8,7 +8,7 @@
 #define ONE_SEC (1000*1000*10)
 #define EPOCH_DIFF     116444736000000000LL
 
-namespace Ancho {
+namespace Ajvar {
 namespace Time {
 
 //----------------------------------------------------------------------------
@@ -93,4 +93,4 @@ TEST(AnchoTimeTest, ImportUnixIntoWin32)
 }
 
 } //namespace Time
-} //namespace Ancho
+} //namespace Ajvar

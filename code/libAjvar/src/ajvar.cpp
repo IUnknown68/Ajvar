@@ -5,8 +5,3 @@
 
 #include "stdafx.h"
 
-
-int DoIt() 
-{
-  return 0;
-}

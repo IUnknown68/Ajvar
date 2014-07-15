@@ -75,12 +75,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="libAjvar\include\ajvar.h" />
+    <ClInclude Include="libAjvar\include\Ajvar.h" />
+    <ClInclude Include="libAjvar\include\Dispatch\Connector.h" />
+    <ClInclude Include="libAjvar\include\Dispatch\Dispatch.h" />
+    <ClInclude Include="libAjvar\include\Dispatch\Ex\Connector.h" />
+    <ClInclude Include="libAjvar\include\Dispatch\Ex\Ex.h" />
+    <ClInclude Include="libAjvar\include\Dispatch\Object.h" />
+    <ClInclude Include="libAjvar\include\Dispatch\RefVariant.h" />
     <ClInclude Include="libAjvar\stdafx.h" />
     <ClInclude Include="targetspecs\targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="libAjvar\src\ajvar.cpp" />
+    <ClCompile Include="libAjvar\src\Ajvar.cpp" />
+    <ClCompile Include="libAjvar\src\Dispatch\Ex\Ex.cpp" />
     <ClCompile Include="libAjvar\stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>

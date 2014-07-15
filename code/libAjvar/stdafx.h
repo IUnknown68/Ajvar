@@ -16,8 +16,12 @@
 // ATL / WTL
 #include <atlbase.h>
 #include <atlstr.h>
-#include <atlapp.h>
+//#include <atlapp.h>
 #include <atlcom.h>
+#include <atlsafe.h>
+
+// Windows stuff
+#include <Exdisp.h>
 
 // gtest
 #include "gtest/gtest.h"

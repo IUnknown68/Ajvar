@@ -1,20 +1,56 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClInclude Include="libAjvar\stdafx.h" />
-    <ClInclude Include="targetspecs\targetver.h" />
-    <ClInclude Include="libAjvar\include\ajvar.h">
-      <Filter>src</Filter>
+    <ClInclude Include="targetspecs\targetver.h">
+      <Filter>targetspecs</Filter>
+    </ClInclude>
+    <ClInclude Include="libAjvar\include\Dispatch\Ex\Connector.h">
+      <Filter>Dispatch\Ex</Filter>
+    </ClInclude>
+    <ClInclude Include="libAjvar\include\Dispatch\Ex\Ex.h">
+      <Filter>Dispatch\Ex</Filter>
+    </ClInclude>
+    <ClInclude Include="libAjvar\include\Dispatch\Connector.h">
+      <Filter>Dispatch</Filter>
+    </ClInclude>
+    <ClInclude Include="libAjvar\include\Dispatch\Dispatch.h">
+      <Filter>Dispatch</Filter>
+    </ClInclude>
+    <ClInclude Include="libAjvar\include\Dispatch\Object.h">
+      <Filter>Dispatch</Filter>
+    </ClInclude>
+    <ClInclude Include="libAjvar\include\Dispatch\RefVariant.h">
+      <Filter>Dispatch</Filter>
+    </ClInclude>
+    <ClInclude Include="libAjvar\include\Ajvar.h">
+      <Filter>general</Filter>
+    </ClInclude>
+    <ClInclude Include="libAjvar\stdafx.h">
+      <Filter>general</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="libAjvar\stdafx.cpp" />
-    <ClCompile Include="libAjvar\src\ajvar.cpp">
-      <Filter>src</Filter>
+    <ClCompile Include="libAjvar\src\Ajvar.cpp">
+      <Filter>general</Filter>
+    </ClCompile>
+    <ClCompile Include="libAjvar\src\Dispatch\Ex\Ex.cpp">
+      <Filter>Dispatch\Ex</Filter>
+    </ClCompile>
+    <ClCompile Include="libAjvar\stdafx.cpp">
+      <Filter>general</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="src">
+    <Filter Include="targetspecs">
+      <UniqueIdentifier>{63010e37-ba58-4d42-b9f3-a48c5b594076}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Dispatch">
+      <UniqueIdentifier>{1afcd8aa-e400-4ef7-8ae1-b9b13a759eec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Dispatch\Ex">
+      <UniqueIdentifier>{798e5f29-1355-48f1-9366-0956a371dab2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="general">
       <UniqueIdentifier>{52507778-e828-4b18-8f34-129584329cdc}</UniqueIdentifier>
     </Filter>
   </ItemGroup>

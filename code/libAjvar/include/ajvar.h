@@ -1,15 +1,62 @@
-// stdafx.h : include file for standard system include files,
-// or project specific include files that are used frequently, but
-// are changed infrequently
-//
-
+/**************************************************************************//**
+ * @file
+ * @brief     Main include file for using Ajvar
+ * @author    Arne Seib <arne@salsitasoft.com>
+ * @copyright 2014 Salsita Software (http://www.salsitasoft.com).
+ *****************************************************************************/
 #pragma once
-int DoIt() ;
 
-namespace Ancho {
+//============================================================================
+/// @brief Main namespace: ATL Extensions
+/// @details  ATL Extensions inlcude a bunch of helpful stuff for dealing
+/// with `IDispatch` and `IDispatchEx`. It uses ATL classes as baseclasses.
+namespace Ajvar {
+
+/// @brief Internally used smartVariant
+typedef ATL::CComVariant ComVariant;
+/// @brief Internally used smartBSTR
+typedef ATL::CComBSTR ComBSTR;
+
+} // namespace Ajvar
+
+#include "Dispatch/Dispatch.h"
+#include "Dispatch/Ex/Ex.h"
+
+namespace Ajvar {
+
+//============================================================================
+/// @brief Namespace for `IDispatch` retlated stuff in ATL Extensions.
+namespace Dispatch {
+
+/// @brief `IDispatch` based object.
+/// Compatible with CComQIPtr<IDispatch>.
+typedef _Object<_Interface, Connector>
+  Object;
+
+//============================================================================
+/// @brief Namespace for `IDispatchEx` retlated stuff in ATL Extensions.
+namespace Ex {
+
+/// @brief `IDispatchEx` based object with autocreating properties.
+/// Compatible with CComQIPtr<IDispatchEx>.
+typedef _Object<_Interface, ConnectorCreate>
+  ObjectCreate;
+
+/// @brief `IDispatchEx` based object **not** autocreating properties.
+/// Compatible with CComQIPtr<IDispatchEx>.
+typedef _Object<_Interface, ConnectorGet>
+  ObjectGet;
+
+/// @brief Default: Create properties.
+typedef ObjectCreate
+  Object;
+
+} // namespace Ex
+} // namespace Dispatch
+
 namespace Time {
 /**
- * Ancho::Time
+ * Ajvar::Time
  * Contains timestamphandling and conversion between
  * Win32 FILETIME based values, unix timestamp and
  * JScript timestamp.
@@ -19,7 +66,7 @@ namespace Time {
  * accept directly a FILETIME structure rather than some int64.
  * See http://msdn.microsoft.com/en-us/library/ms724284%28v=vs.85%29.aspx
  *
- * Ancho::Time contains the following namespace / type relations:
+ * Ajvar::Time contains the following namespace / type relations:
  *  Win32     : A 64bit uinteger based on the Win32-epoch in 100-nanoseconds
  *  Unix      : A 32bit integer, unix time stamp
  *  JScript   : A double value, JavaScript, as returned from Date.getTime()
@@ -136,4 +183,4 @@ namespace JScript {
 }
 
 } //namespace Time
-} //namespace Ancho
+} // namespace Ajvar
