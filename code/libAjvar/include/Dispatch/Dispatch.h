@@ -6,13 +6,13 @@
  *****************************************************************************/
 #pragma once
 
-#include "Connector.h"
-#include "RefVariant.h"
-#include "Object.h"
-
 namespace Ajvar {
-namespace Dispatch {
 
+//============================================================================
+/// @brief Namespace for `IDispatch` retlated stuff in ATL Extensions.
+/// @details
+/// Classes: `Object`
+namespace Dispatch {
 
 /// @brief Function to get the scripting interface from an `IWebBrowser2`.
 /// @details  This gets the current document from an `IWebBrowser2`, from
@@ -49,6 +49,12 @@ template<class TInterface> HRESULT GetScriptDispatch(::IWebBrowser2 * aBrowser, 
 
   return htmlWindow->QueryInterface(_uuidof(TInterface), (void **)aRetVal);
 }
+
+/// @brief `IDispatch` based object.
+/// Compatible with CComQIPtr<IDispatch>.
+typedef _Object<_Interface, Connector>
+  Object;
+
 
 } // namespace Dispatch
 } // namespace Ajvar

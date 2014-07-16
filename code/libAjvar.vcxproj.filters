@@ -28,16 +28,22 @@
     <ClInclude Include="libAjvar\stdafx.h">
       <Filter>general</Filter>
     </ClInclude>
+    <ClInclude Include="libAjvar\include\Dispatch\Ex\Properties.h">
+      <Filter>Dispatch\Ex</Filter>
+    </ClInclude>
+    <ClInclude Include="libAjvar\include\Ajvartime.h">
+      <Filter>general</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="libAjvar\src\Ajvar.cpp">
-      <Filter>general</Filter>
-    </ClCompile>
     <ClCompile Include="libAjvar\src\Dispatch\Ex\Ex.cpp">
       <Filter>Dispatch\Ex</Filter>
     </ClCompile>
     <ClCompile Include="libAjvar\stdafx.cpp">
       <Filter>general</Filter>
+    </ClCompile>
+    <ClCompile Include="libAjvar\src\Dispatch\Ex\Properties.cpp">
+      <Filter>Dispatch\Ex</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -16,13 +16,22 @@
 // ATL / WTL
 #include <atlbase.h>
 #include <atlstr.h>
-//#include <atlapp.h>
 #include <atlcom.h>
 #include <atlsafe.h>
 
 // Windows stuff
 #include <Exdisp.h>
+#include <dispex.h>
+
+// std::
+#include <string>
+#include <map>
+#include <set>
+#include <unordered_map>
+#include <algorithm>
+#include <functional>
 
 // gtest
 #include "gtest/gtest.h"
 #include "gmock/gmock.h"
+

@@ -24,7 +24,7 @@ HRESULT forEach(IDispatchEx * aDispEx, EachDispEx aEach, DWORD aEnumFlags)
 
     hr = aDispEx->GetMemberName(did, &name);
     if (SUCCEEDED(hr)) {
-      hr = aDispEx->InvokeEx(did, LOCALE_USER_DEFAULT, DISPATCH_PROPERTYGET, &params, &value, NULL, NULL);
+      hr = aDispEx->InvokeEx(did, LOCALE_USER_DEFAULT, DISPATCH_PROPERTYGET, &params, &value, nullptr, nullptr);
     }
 
     hr = aEach(hr, name, did, value);

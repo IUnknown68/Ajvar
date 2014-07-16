@@ -1,12 +1,10 @@
 /**************************************************************************//**
  * @file
- * @brief     Declaration of `ALTX::Dispatch::Ex` Connector class.
+ * @brief     Declaration of `Ajvar::Dispatch::Ex` Connector class.
  * @author    Arne Seib <arne@salsitasoft.com>
  * @copyright 2014 Salsita Software (http://www.salsitasoft.com).
  *****************************************************************************/
 #pragma once
-
-#include <DispEx.h>
 
 namespace Ajvar {
 namespace Dispatch {
@@ -30,7 +28,7 @@ public:
   /// @brief Get a `DISPID` for `aName`.
   /// @param aObject  The object to get the property.
   /// @param aName  Name of the property.
-  /// @param[retval] aRetVal  Reference to a `DISPID`.
+  /// @param[out] aRetVal  Reference to a `DISPID`.
   static HRESULT GetDISPID(IDispatchEx * aObject, LPCWSTR aName, DISPID & aRetVal)
   {
     if (nullptr == aObject || nullptr == aName) {
@@ -42,7 +40,7 @@ public:
   /// @brief Get the `VARIANT` for `aDispId` or an error.
   /// @param aObject  The object to get the property.
   /// @param aDispId  'DISPID' of the property.
-  /// @param[retval] aRetVal  Reference to a `VARIANT` receiving the property or an error.
+  /// @param[out] aRetVal  Reference to a `VARIANT` receiving the property or an error.
   /// @return `HRESULT`. In case of an error `aRetVal` is set to `VT_ERROR` and contains the same `HRESULT`.
   static HRESULT Get(IDispatchEx * aObject, DISPID aDispId, VARIANT & aRetVal)
   {
@@ -57,7 +55,7 @@ public:
       LOCALE_USER_DEFAULT,
       DISPATCH_PROPERTYGET,
       &params,
-      &aRetVal, NULL, NULL);
+      &aRetVal, nullptr, nullptr);
     if (FAILED(hr)) {
       // In case of error store the error in return value
       VariantClear(&aRetVal);
@@ -109,7 +107,7 @@ public:
           aDispId,
           LOCALE_USER_DEFAULT,
           DISPATCH_PROPERTYPUTREF,
-          &params, NULL, NULL, NULL);
+          &params, nullptr, nullptr, nullptr);
     }
     // if value is a basic type OR the firt `InvokeEx` failed...
     if (FAILED(hr)) {
@@ -118,7 +116,7 @@ public:
         aDispId,
         LOCALE_USER_DEFAULT,
         DISPATCH_PROPERTYPUT,
-        &params, NULL, NULL, NULL);
+        &params, nullptr, nullptr, nullptr);
     }
     return hr;
   }

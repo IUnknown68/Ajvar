@@ -23,7 +23,7 @@
     </Link>
     <ClCompile>
       <PreprocessorDefinitions>_VARIADIC_MAX=10;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(ProjectDir)\include;$(ProjectDir)\src;$(GeneratedFilesFolder)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\$(ProjectName)\include;$(ProjectDir)\$(ProjectName)\src;$(GeneratedFilesFolder)</AdditionalIncludeDirectories>
     </ClCompile>
     <Midl>
       <HeaderFileName>$(GeneratedFilesFolder)\%(Filename)_i.h</HeaderFileName>

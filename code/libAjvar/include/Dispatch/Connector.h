@@ -1,6 +1,6 @@
 /**************************************************************************//**
  * @file
- * @brief     Declaration of `ALTX::Dispatch` Connector class.
+ * @brief     Declaration of `Ajvar::Dispatch` Connector class.
  * @author    Arne Seib <arne@salsitasoft.com>
  * @copyright 2014 Salsita Software (http://www.salsitasoft.com).
  *****************************************************************************/
@@ -27,7 +27,7 @@ public:
   /// @brief Get a `DISPID` for `aName`.
   /// @param aObject  The object to get the property.
   /// @param aName  Name of the property.
-  /// @param[retval] aRetVal  Reference to a `DISPID`.
+  /// @param[out] aRetVal  Reference to a `DISPID`.
   static HRESULT GetDISPID(IDispatch * aObject, LPCWSTR aName, DISPID & aRetVal)
   {
     if (nullptr == aObject || nullptr == aName) {
@@ -39,7 +39,7 @@ public:
   /// @brief Get the `VARIANT` for `aDispId` or an error.
   /// @param aObject  The object to get the property.
   /// @param aDispId  'DISPID' of the property.
-  /// @param[retval] aRetVal  Reference to a `VARIANT` receiving the property or an error.
+  /// @param[out] aRetVal  Reference to a `VARIANT` receiving the property or an error.
   /// @return `HRESULT`. In case of an error `aRetVal` is set to `VT_ERROR` and contains the same `HRESULT`.
   static HRESULT Get(IDispatch * aObject, DISPID aDispId, VARIANT & aRetVal)
   {

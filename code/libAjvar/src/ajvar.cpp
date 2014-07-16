@@ -1,7 +1,9 @@
-// stdafx.h : include file for standard system include files,
-// or project specific include files that are used frequently, but
-// are changed infrequently
-//
+/**************************************************************************//**
+ * @file
+ * @brief     
+ * @author    Arne Seib <arne@salsitasoft.com>
+ * @copyright 2014 Salsita Software (http://www.salsitasoft.com).
+ *****************************************************************************/
 
 #include "stdafx.h"
 

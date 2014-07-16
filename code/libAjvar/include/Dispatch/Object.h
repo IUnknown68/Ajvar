@@ -1,6 +1,6 @@
 /**************************************************************************//**
  * @file
- * @brief     Declaration of `ALTX::Dispatch::_Object`
+ * @brief     Declaration of `Ajvar::Dispatch::_Object`
  * @author    Arne Seib <arne@salsitasoft.com>
  * @copyright 2014 Salsita Software (http://www.salsitasoft.com).
  *****************************************************************************/
@@ -114,7 +114,7 @@ public:
     if ( (VT_DISPATCH == vt.vt)
       && (nullptr != vt.pdispVal)
       && FAILED(vt.pdispVal->QueryInterface(_uuidof(TInterface), (void **)&p))) {
-        p = NULL;
+        p = nullptr;
     }
   }
 
@@ -159,7 +159,7 @@ public:
     ATL::CComVariant vt;
     DISPPARAMS params = {nullptr, nullptr, 0, 0};
     hr = p->InvokeEx(dispid, LOCALE_USER_DEFAULT, DISPATCH_CONSTRUCT,
-      &params, &vt, NULL, NULL);
+      &params, &vt, nullptr, nullptr);
     if (FAILED(hr)) {
       return nullptr;
     }

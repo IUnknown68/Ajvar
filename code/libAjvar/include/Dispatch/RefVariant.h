@@ -1,6 +1,6 @@
 /**************************************************************************//**
  * @file
- * @brief     Declaration of `ALTX::Dispatch::RefVariant`.
+ * @brief     Declaration of `Ajvar::Dispatch::RefVariant`.
  * @author    Arne Seib <arne@salsitasoft.com>
  * @copyright 2014 Salsita Software (http://www.salsitasoft.com).
  *****************************************************************************/
@@ -18,7 +18,7 @@ namespace Dispatch {
 /// to the `_Object` (usually `IDispatch` or `IDispatchEx`) it belongs to and sets
 /// the value back on the interface when the assignment operator is called.
 /// Additionally it is a callable, in case the property is a function.
-/// It uses a `TConnector` to get / set the property.
+/// `RefVariant` uses a `TConnector` to get / set the property.
 /// @tparam  TConnector The connector class to use. @See Ajvar::Dispatch::_Connector.
 template<class TConnector, class TBase = ComVariant>
   class RefVariant :
@@ -95,7 +95,6 @@ public:
 #undef ASSIGNMENT
   /// @}
 
-
   /// @brief Call operator.
   /// @details  Takes up to 4 optional arguments for the call.
   /// The arguments here are in the order as they appear in the callee.
@@ -148,7 +147,7 @@ public:
       LOCALE_USER_DEFAULT,
       DISPATCH_METHOD,
       &params,
-      &aRetVal, NULL, NULL);
+      &aRetVal, nullptr, nullptr);
   }
 
 protected:
