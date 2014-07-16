@@ -24,7 +24,7 @@ namespace Ex {
 /// - DISPID aDispId  : DISPID of the current value. May be invalid when `aResult` is an error.
 /// - VARIANT aValue  : The actual value. May be invalid when `aResult` is an error.
 typedef
-  std::function<HRESULT(HRESULT aResult, const BSTR & aName, const DISPID aDispId, const VARIANT  & aValue)>
+  std::function<HRESULT(HRESULT aResult, const BSTR & aName, const DISPID aDispId, const VARIANT & aValue)>
     EachDispEx;
 
 /// @brief Iterate over all properties of `aDispEx` and calls `aEach()` for each found property.
