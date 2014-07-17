@@ -12,7 +12,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="libAjvarTests\ajvarTest.cpp">
+    <ClCompile Include="src\libAjvarTests\ajvarTest.cpp">
       <Filter>tests</Filter>
     </ClCompile>
   </ItemGroup>

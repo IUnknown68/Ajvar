@@ -1,48 +1,48 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClInclude Include="targetspecs\targetver.h">
+    <ClInclude Include="src\targetspecs\targetver.h">
       <Filter>targetspecs</Filter>
     </ClInclude>
-    <ClInclude Include="libAjvar\include\Dispatch\Ex\Connector.h">
+    <ClInclude Include="src\libAjvar\include\Dispatch\Ex\Connector.h">
       <Filter>Dispatch\Ex</Filter>
     </ClInclude>
-    <ClInclude Include="libAjvar\include\Dispatch\Ex\Ex.h">
+    <ClInclude Include="src\libAjvar\include\Dispatch\Ex\Ex.h">
       <Filter>Dispatch\Ex</Filter>
     </ClInclude>
-    <ClInclude Include="libAjvar\include\Dispatch\Connector.h">
+    <ClInclude Include="src\libAjvar\include\Dispatch\Connector.h">
       <Filter>Dispatch</Filter>
     </ClInclude>
-    <ClInclude Include="libAjvar\include\Dispatch\Dispatch.h">
+    <ClInclude Include="src\libAjvar\include\Dispatch\Dispatch.h">
       <Filter>Dispatch</Filter>
     </ClInclude>
-    <ClInclude Include="libAjvar\include\Dispatch\Object.h">
+    <ClInclude Include="src\libAjvar\include\Dispatch\Object.h">
       <Filter>Dispatch</Filter>
     </ClInclude>
-    <ClInclude Include="libAjvar\include\Dispatch\RefVariant.h">
+    <ClInclude Include="src\libAjvar\include\Dispatch\RefVariant.h">
       <Filter>Dispatch</Filter>
     </ClInclude>
-    <ClInclude Include="libAjvar\include\Ajvar.h">
+    <ClInclude Include="src\libAjvar\include\Ajvar.h">
       <Filter>general</Filter>
     </ClInclude>
-    <ClInclude Include="libAjvar\stdafx.h">
+    <ClInclude Include="src\libAjvar\stdafx.h">
       <Filter>general</Filter>
     </ClInclude>
-    <ClInclude Include="libAjvar\include\Dispatch\Ex\Properties.h">
+    <ClInclude Include="src\libAjvar\include\Dispatch\Ex\Properties.h">
       <Filter>Dispatch\Ex</Filter>
     </ClInclude>
-    <ClInclude Include="libAjvar\include\Ajvartime.h">
+    <ClInclude Include="src\libAjvar\include\Ajvartime.h">
       <Filter>general</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="libAjvar\src\Dispatch\Ex\Ex.cpp">
+    <ClCompile Include="src\libAjvar\src\Dispatch\Ex\Ex.cpp">
       <Filter>Dispatch\Ex</Filter>
     </ClCompile>
-    <ClCompile Include="libAjvar\stdafx.cpp">
+    <ClCompile Include="src\libAjvar\stdafx.cpp">
       <Filter>general</Filter>
     </ClCompile>
-    <ClCompile Include="libAjvar\src\Dispatch\Ex\Properties.cpp">
+    <ClCompile Include="src\libAjvar\src\Dispatch\Ex\Properties.cpp">
       <Filter>Dispatch\Ex</Filter>
     </ClCompile>
   </ItemGroup>

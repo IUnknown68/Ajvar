@@ -157,6 +157,7 @@ $RECYCLE.BIN/
 
 # Manually added files
 deploy/
+docs/
 
 # Generated files
 *_i.h
