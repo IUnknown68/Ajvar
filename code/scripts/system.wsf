@@ -1,0 +1,11 @@
+﻿<job>
+<script language="JScript" src="xmlFile.js"/>
+<script language="JScript" src="getArgs.js"/>
+<script language="JScript">
+// global Scripting.FileSystemObject
+var fso = WScript.CreateObject("Scripting.FileSystemObject");
+
+WScript.Echo("System loaded");
+
+</script>
+</job>

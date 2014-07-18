@@ -42,5 +42,36 @@ HRESULT forEach(IDispatchEx * aDispEx, EachDispEx aEach, DWORD aEnumFlags)
 
 } // namespace Ex
 } // namespace Dispatch
-} // namespace Ajvar
 
+
+
+
+
+
+#define _L___(s) L ## s
+#define _L__(s) _L___(s)
+const _VersionInfo Version =
+{
+  AJ_VER_MAJ,
+  AJ_VER_MIN,
+  AJ_VER_PAT,
+  _L__(AJ_VER_PRE),
+  _L__(AJ_VER_MET)
+};
+#undef _L__
+#undef _L___
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+} // namespace Ajvar

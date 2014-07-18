@@ -84,6 +84,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="src\libAjvar\include\Ajvar.h" />
+    <ClInclude Include="src\libAjvar\include\_Version.h" />
     <ClInclude Include="src\libAjvar\include\Dispatch\Connector.h" />
     <ClInclude Include="src\libAjvar\include\Dispatch\Dispatch.h" />
     <ClInclude Include="src\libAjvar\include\Dispatch\Ex\Connector.h" />
@@ -98,6 +99,7 @@
   <ItemGroup>
     <ClCompile Include="src\libAjvar\src\Dispatch\Ex\Ex.cpp" />
     <ClCompile Include="src\libAjvar\src\Dispatch\Ex\Properties.cpp" />
+    <ClCompile Include="src\libAjvar\src\_Version.cpp" />
     <ClCompile Include="src\libAjvar\stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>

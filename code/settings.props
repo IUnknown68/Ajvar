@@ -2,8 +2,13 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros">
+    <Version_Major>0</Version_Major>
+    <Version_Minor>1</Version_Minor>
+    <Version_Patch>0</Version_Patch>
+    <Version_Pre>-alpha</Version_Pre>
+    <Version_Meta />
+    <VersionString>$(Version_Major).$(Version_Minor).$(Version_Patch)$(Version_Pre)$(Version_Meta)</VersionString>
     <FullConfiguration>$(Configuration)_$(PlatformName)</FullConfiguration>
-    <AjvarVersion>0.1.0-alpha</AjvarVersion>
     <WTL_Includes>C:\Program Files\WTL\Include</WTL_Includes>
     <GTest_Includes>$(VisualStudioDir)\Projects\gtest\include</GTest_Includes>
     <GTest_Lib>$(VisualStudioDir)\Projects\gtest\lib\$(FullConfiguration)</GTest_Lib>
@@ -11,7 +16,7 @@
     <GMock_Lib>$(GTest_Lib)</GMock_Lib>
     <Doxygen>C:\Program Files\doxygen\bin\doxygen.exe</Doxygen>
     <DeployFolder>$(SolutionDir)..\deploy\</DeployFolder>
-    <DeployVersionFolder>$(DeployFolder)$(SolutionName)-$(AjvarVersion)</DeployVersionFolder>
+    <DeployVersionFolder>$(DeployFolder)$(SolutionName)-$(VersionString)</DeployVersionFolder>
     <BuildFolder>$(SolutionDir)..\build</BuildFolder>
     <GeneratedFilesFolder>$(BuildFolder)src\$(ProjectName)\</GeneratedFilesFolder>
   </PropertyGroup>
@@ -26,7 +31,7 @@
       <AdditionalLibraryDirectories>$(GTest_Lib);$(GMock_Lib)</AdditionalLibraryDirectories>
     </Link>
     <ClCompile>
-      <PreprocessorDefinitions>_VARIADIC_MAX=10;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_VARIADIC_MAX=10;AJ_VER_MAJ=$(Version_Major);AJ_VER_MIN=$(Version_Minor);AJ_VER_PAT=$(Version_Patch);AJ_VER_PRE="$(Version_Pre)";AJ_VER_MET="$(Version_Meta)";%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(ProjectDir)\src\$(ProjectName)\include;$(ProjectDir)\src\$(ProjectName);$(GeneratedFilesFolder)</AdditionalIncludeDirectories>
     </ClCompile>
     <Midl>
@@ -68,11 +73,26 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <BuildMacro Include="Version_Major">
+      <Value>$(Version_Major)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Version_Minor">
+      <Value>$(Version_Minor)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Version_Patch">
+      <Value>$(Version_Patch)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Version_Pre">
+      <Value>$(Version_Pre)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Version_Meta">
+      <Value>$(Version_Meta)</Value>
+    </BuildMacro>
+    <BuildMacro Include="VersionString">
+      <Value>$(VersionString)</Value>
+    </BuildMacro>
     <BuildMacro Include="FullConfiguration">
       <Value>$(FullConfiguration)</Value>
-    </BuildMacro>
-    <BuildMacro Include="AjvarVersion">
-      <Value>$(AjvarVersion)</Value>
     </BuildMacro>
     <BuildMacro Include="WTL_Includes">
       <Value>$(WTL_Includes)</Value>

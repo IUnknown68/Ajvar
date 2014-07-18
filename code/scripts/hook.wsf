@@ -1,0 +1,55 @@
+﻿<job>
+<script language="JScript">
+// global Scripting.FileSystemObject
+var fso = WScript.CreateObject("Scripting.FileSystemObject");
+// global shell.application
+var shellApp =  WScript.CreateObject("shell.application");
+// WScript.Shell
+var shell = WScript.CreateObject("WScript.Shell");
+</script>
+
+<script language="JScript" src="getArgs.js"/>
+
+<script language="JScript">
+
+//------------------------------------------------------------------------------
+var errors = [];
+var args = getArgs({
+  'h': {
+    alias: 'hook',
+    name: 'hook name'
+  }
+}, errors);
+
+if (errors.length) {
+  WScript.Echo('Errors:');
+  for (var i = 0; i < errors.length; ++i) {
+    WScript.Echo(errors[i]);
+  }
+  WScript.Quit(-1);
+}
+
+
+WScript.Echo(args.h);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+WScript.Quit(-1);
+</script>
+
+</job>

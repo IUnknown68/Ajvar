@@ -66,12 +66,8 @@
       <Outputs>$(SolutionDir)..\docs\html\index.html;%(Outputs)</Outputs>
       <LinkObjects>false</LinkObjects>
     </CustomBuild>
-    <PostBuildEvent>
-      <Command>xcopy "$(SolutionDir)..\docs\html" "$(DeployVersionFolder)\docs" /d /i /y /s</Command>
-    </PostBuildEvent>
-    <PostBuildEvent>
-      <Message>Copy files</Message>
-    </PostBuildEvent>
+    <PostBuildEvent />
+    <PostBuildEvent />
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -94,12 +90,8 @@
       <Message>Generating documentation...</Message>
       <LinkObjects>false</LinkObjects>
     </CustomBuild>
-    <PostBuildEvent>
-      <Command>xcopy "$(SolutionDir)..\docs\html" "$(DeployVersionFolder)\docs" /d /i /y /s</Command>
-    </PostBuildEvent>
-    <PostBuildEvent>
-      <Message>Copy files</Message>
-    </PostBuildEvent>
+    <PostBuildEvent />
+    <PostBuildEvent />
   </ItemDefinitionGroup>
   <ItemGroup>
     <CustomBuild Include="..\docs\Doxyfile">

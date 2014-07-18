@@ -14,7 +14,7 @@
       <Outputs>$(DeployVersionFolder).zip;$(DeployVersionFolder);%(Outputs)</Outputs>
     </CustomBuild>
     <CustomBuildStep>
-      <Outputs>$(DeployFolder)%(Filename)-$(AjvarVersion);%(Outputs)</Outputs>
+      <Outputs>$(DeployFolder)%(Filename)-$(VersionString);%(Outputs)</Outputs>
     </CustomBuildStep>
   </ItemDefinitionGroup>
   <ItemGroup />

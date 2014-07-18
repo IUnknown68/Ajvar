@@ -71,6 +71,7 @@ typedef ATL::CComBSTR ComBSTR;
 
 } // namespace Ajvar
 
+#include "_Version.h"
 #include "Dispatch/Connector.h"
 #include "Dispatch/RefVariant.h"
 #include "Dispatch/Object.h"

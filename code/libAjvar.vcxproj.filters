@@ -34,6 +34,9 @@
     <ClInclude Include="src\libAjvar\include\Ajvartime.h">
       <Filter>general</Filter>
     </ClInclude>
+    <ClInclude Include="src\libAjvar\include\_Version.h">
+      <Filter>general</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\libAjvar\src\Dispatch\Ex\Ex.cpp">
@@ -44,6 +47,9 @@
     </ClCompile>
     <ClCompile Include="src\libAjvar\src\Dispatch\Ex\Properties.cpp">
       <Filter>Dispatch\Ex</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libAjvar\src\_Version.cpp">
+      <Filter>general</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
