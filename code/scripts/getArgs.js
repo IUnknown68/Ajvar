@@ -1,4 +1,6 @@
 //------------------------------------------------------------------------------
+/// @function getArgs
+/// @brief Gets the command line arguments
 function getArgs(options, errors) {
   var args = {};
   for (var i in options) {
