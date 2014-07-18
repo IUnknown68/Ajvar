@@ -59,9 +59,28 @@ getArgs.int16 = function(aValue) {
   return getArgs.intN(aValue, 16);
 };
 
+getArgs.settings = function(aValue) {
+  var file = fso.GetFile(fso.GetAbsolutePathName(aValue));
+
+  var settingsFile = WScript.CreateObject('Msxml2.DOMDocument.6.0');
+  settingsFile.async = false;
+  if (!settingsFile.load(file.Path)) {
+    throw new Error('failed loading');
+  }
+  settingsFile.setProperty('SelectionLanguage', 'XPath');
+  settingsFile.setProperty('SelectionNamespaces', 'xmlns:a="http://schemas.microsoft.com/developer/msbuild/2003"');
+  return {
+    get: function(aName) {
+      var nodeList = settingsFile.selectNodes('/a:Project/a:PropertyGroup[@Label="UserMacros"]/a:' + aName);
+      var node;
+      if (node = nodeList.nextNode()) {
+        return node.text;
+      }
+      return undefined;
+    }
+  };
+};
+
 getArgs._default = function(aValue) {
   return aValue;
 };
-
-
-
