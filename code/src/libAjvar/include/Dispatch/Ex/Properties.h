@@ -47,7 +47,7 @@ protected:  // methods
   /// @param[in] aProperty `VARIANT *`, the actual value.
   HRESULT putValue(
     DISPID aId,
-    VARIANT * aProperty);
+    const VARIANT & aProperty);
 
   /// @brief Gets a value by id.
   /// @param[in] aId `DISPID` of the value to get.
