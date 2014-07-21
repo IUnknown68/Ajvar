@@ -84,20 +84,29 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="src\libAjvar\include\Ajvar.h" />
+    <ClInclude Include="src\libAjvar\include\Browser\DocumentSink.h" />
+    <ClInclude Include="src\libAjvar\include\Debug\ComObjectDebugging.h" />
     <ClInclude Include="src\libAjvar\include\Dispatch\Connector.h" />
     <ClInclude Include="src\libAjvar\include\Dispatch\Dispatch.h" />
     <ClInclude Include="src\libAjvar\include\Dispatch\Ex\Connector.h" />
+    <ClInclude Include="src\libAjvar\include\Dispatch\Ex\Proxy.h" />
     <ClInclude Include="src\libAjvar\include\Dispatch\Ex\Ex.h" />
     <ClInclude Include="src\libAjvar\include\Dispatch\Ex\Properties.h" />
     <ClInclude Include="src\libAjvar\include\Dispatch\Object.h" />
+    <ClInclude Include="src\libAjvar\include\Dispatch\Proxy.h" />
     <ClInclude Include="src\libAjvar\include\Dispatch\RefVariant.h" />
-    <ClInclude Include="src\libAjvar\include\Ajvartime.h" />
+    <ClInclude Include="src\libAjvar\include\Error\ErrorStrings.h" />
+    <ClInclude Include="src\libAjvar\include\GlobalInterface\GlobalInterface.h" />
+    <ClInclude Include="src\libAjvar\include\Sync\CriticalSection.h" />
+    <ClInclude Include="src\libAjvar\include\Sync\Lock.h" />
+    <ClInclude Include="src\libAjvar\include\Time\Time.h" />
     <ClInclude Include="src\libAjvar\stdafx.h" />
     <ClInclude Include="src\targetspecs\targetver.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\libAjvar\src\Dispatch\Ex\Ex.cpp" />
     <ClCompile Include="src\libAjvar\src\Dispatch\Ex\Properties.cpp" />
+    <ClCompile Include="src\libAjvar\src\Error\ErrorStrings.cpp" />
     <ClCompile Include="src\libAjvar\stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>

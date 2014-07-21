@@ -13,7 +13,7 @@ namespace Time {
 
 //----------------------------------------------------------------------------
 // Compare "now()" values
-TEST(AnchoTimeTest, Now)
+TEST(TimeTest, Now)
 {
   auto tWin32 = Win32::now();
   auto tUnix = Unix::now();
@@ -28,7 +28,7 @@ TEST(AnchoTimeTest, Now)
 
 //----------------------------------------------------------------------------
 // Import Win32 -> Unix
-TEST(AnchoTimeTest, ImportWin32IntoUnix)
+TEST(TimeTest, ImportWin32IntoUnix)
 {
   auto tWin32 = Win32::now();
   auto tUnix = Unix::now();
@@ -39,7 +39,7 @@ TEST(AnchoTimeTest, ImportWin32IntoUnix)
 
 //----------------------------------------------------------------------------
 // Import JScript -> Unix
-TEST(AnchoTimeTest, ImportJScriptIntoUnix)
+TEST(TimeTest, ImportJScriptIntoUnix)
 {
   auto tJScript = JScript::now();
   auto tUnix = Unix::now();
@@ -50,7 +50,7 @@ TEST(AnchoTimeTest, ImportJScriptIntoUnix)
 
 //----------------------------------------------------------------------------
 // Import Win32 -> JScript
-TEST(AnchoTimeTest, ImportWin32IntoJScript)
+TEST(TimeTest, ImportWin32IntoJScript)
 {
   auto tJScript = JScript::now();
   auto tWin32 = Win32::now();
@@ -61,7 +61,7 @@ TEST(AnchoTimeTest, ImportWin32IntoJScript)
 
 //----------------------------------------------------------------------------
 // Import Unix -> JScript
-TEST(AnchoTimeTest, ImportUnixIntoJScript)
+TEST(TimeTest, ImportUnixIntoJScript)
 {
   auto tJScript = JScript::now();
   auto tUnix = Unix::now();
@@ -72,7 +72,7 @@ TEST(AnchoTimeTest, ImportUnixIntoJScript)
 
 //----------------------------------------------------------------------------
 // Import JScript -> Win32
-TEST(AnchoTimeTest, ImportJScriptIntoWin32)
+TEST(TimeTest, ImportJScriptIntoWin32)
 {
   auto tWin32 = Win32::now();
   auto tJScript = JScript::now();
@@ -83,7 +83,7 @@ TEST(AnchoTimeTest, ImportJScriptIntoWin32)
 
 //----------------------------------------------------------------------------
 // Import Unix -> Win32
-TEST(AnchoTimeTest, ImportUnixIntoWin32)
+TEST(TimeTest, ImportUnixIntoWin32)
 {
   auto tWin32 = Win32::now();
   auto tUnix = Unix::now();

@@ -47,7 +47,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <PostBuildEventUseInBuild>true</PostBuildEventUseInBuild>
+    <PostBuildEventUseInBuild>false</PostBuildEventUseInBuild>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -100,7 +100,14 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\libAjvarTests\ajvarTest.cpp" />
+    <ClCompile Include="src\libAjvarTests\AtlModule.cpp" />
+    <ClCompile Include="src\libAjvarTests\DebugTest.cpp" />
+    <ClCompile Include="src\libAjvarTests\GlobalInterfaceTest.cpp" />
+    <ClCompile Include="src\libAjvarTests\TimeTest.cpp" />
+    <ClCompile Include="src\libAjvarTests\PropertiesTest.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\libAjvarTests\AtlModule.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

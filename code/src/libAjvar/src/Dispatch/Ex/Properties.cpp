@@ -41,19 +41,13 @@ void Properties::reset()
 /// such a pair call `getDispID(...)` with `aCreate` set to `true`.
 HRESULT Properties::putValue(
   DISPID aId,
-  VARIANT * aProperty)
+  const VARIANT & aProperty)
 {
-  if (!aProperty) {
-    return E_INVALIDARG;
-  }
   // check if we aId refers to an existing value
-  if (mValues.end() == mValues.find(aId)) {
+  if (mNames.end() == mNames.find(aId)) {
     return DISP_E_MEMBERNOTFOUND;
   }
-  if (aProperty != nullptr) {
-    return mValues[aId].Copy(aProperty);
-  }
-  return S_OK;
+  return mValues[aId].Copy(&aProperty);
 }
 
 //----------------------------------------------------------------------------
