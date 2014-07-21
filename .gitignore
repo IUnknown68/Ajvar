@@ -8,12 +8,8 @@
 
 # Build results
 
-[Dd]ebug/
-[Dd]ebug_*/
-[Rr]elease/
-[Rr]elease_*/
-x64/
 build/
+deploy/
 [Bb]in/
 [Oo]bj/
 graphics/
@@ -156,7 +152,6 @@ $RECYCLE.BIN/
 .DS_Store
 
 # Manually added files
-deploy/
 docs/
 
 # Generated files
