@@ -5,9 +5,9 @@
     <Version_Major>0</Version_Major>
     <Version_Minor>1</Version_Minor>
     <Version_Patch>0</Version_Patch>
-    <Version_Pre>-alpha</Version_Pre>
+    <Version_Pre>alpha</Version_Pre>
     <Version_Meta />
-    <VersionString>$(Version_Major).$(Version_Minor).$(Version_Patch)$(Version_Pre)$(Version_Meta)</VersionString>
+    <VersionString>0.1.0-alpha</VersionString>
     <FullConfiguration>$(Configuration)_$(PlatformName)</FullConfiguration>
     <WTL_Includes>C:\Program Files\WTL\Include</WTL_Includes>
     <GTest_Includes>$(VisualStudioDir)\Projects\gtest\include</GTest_Includes>
@@ -17,13 +17,13 @@
     <Doxygen>C:\Program Files\doxygen\bin\doxygen.exe</Doxygen>
     <DeployFolder>$(SolutionDir)..\deploy\</DeployFolder>
     <DeployVersionFolder>$(DeployFolder)$(SolutionName)-$(VersionString)</DeployVersionFolder>
-    <BuildFolder>$(SolutionDir)..\build</BuildFolder>
+    <BuildFolder>$(SolutionDir)..\build\</BuildFolder>
     <GeneratedFilesFolder>$(BuildFolder)src\$(ProjectName)\</GeneratedFilesFolder>
   </PropertyGroup>
   <PropertyGroup>
-    <OutDir>$(BuildFolder)\$(FullConfiguration)\</OutDir>
-    <IntDir>$(BuildFolder)\$(FullConfiguration)\$(ProjectName)\</IntDir>
-    <IncludePath>$(WTL_Includes);$(GTest_Includes);$(GMock_Includes);$(SolutionDir)src\targetspecs;$(IncludePath)</IncludePath>
+    <OutDir>$(BuildFolder)$(FullConfiguration)\</OutDir>
+    <IntDir>$(BuildFolder)$(FullConfiguration)\$(ProjectName)\</IntDir>
+    <IncludePath>$(WTL_Includes);$(GTest_Includes);$(GMock_Includes);$(SolutionDir)targetspecs;$(IncludePath)</IncludePath>
     <LibraryPath>$(GTest_Lib);$(GMock_Lib);$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup>
@@ -32,7 +32,6 @@
     </Link>
     <ClCompile>
       <PreprocessorDefinitions>_VARIADIC_MAX=10;AJ_VER_MAJ=$(Version_Major);AJ_VER_MIN=$(Version_Minor);AJ_VER_PAT=$(Version_Patch);AJ_VER_PRE="$(Version_Pre)";AJ_VER_MET="$(Version_Meta)";%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(ProjectDir)\src\$(ProjectName)\include;$(ProjectDir)\src\$(ProjectName);$(GeneratedFilesFolder)</AdditionalIncludeDirectories>
     </ClCompile>
     <Midl>
       <HeaderFileName>$(GeneratedFilesFolder)\%(Filename)_i.h</HeaderFileName>
@@ -45,31 +44,13 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <AdditionalIncludeDirectories>$(ProjectDir)include;$(ProjectDir)src;$(GeneratedFilesFolder);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-    </ClCompile>
-  </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleasePDB|Win32'">
-    <ClCompile>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-    </ClCompile>
-  </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <ClCompile>
-      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-    </ClCompile>
-  </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <ClCompile>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-    </ClCompile>
-  </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleasePDB|x64'">
-    <ClCompile>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <AdditionalIncludeDirectories>$(ProjectDir)include;$(ProjectDir)src;$(GeneratedFilesFolder);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>

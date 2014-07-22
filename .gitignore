@@ -9,7 +9,8 @@
 # Build results
 
 build/
-deploy/
+deploy/*
+!deploy/README.md
 [Bb]in/
 [Oo]bj/
 graphics/
@@ -152,7 +153,8 @@ $RECYCLE.BIN/
 .DS_Store
 
 # Manually added files
-docs/html
+docs/
+!docs/README.md
 
 # Generated files
 *_i.h
