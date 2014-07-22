@@ -1,25 +1,52 @@
-﻿//------------------------------------------------------------------------------
+﻿/***
+  A hook requires the following command line arguments:
+  - everything from settings.js
+  - 'event' : name of the event (PreBuild, PreLink, PostBuild)
+  - 'project' : projectname
+  - 'platform' : Win32 / x64
+  - 'configuration' : e.g. Release, Debug
+  - 'solution' : solutionname
+  - 'deployfolder' : folder to deploy to, e.g. "deploy/sample-1.0.1-beta"
+                     This will result in a zip file: "deploy/sample-1.0.1-beta.zip"
+  - 'outfolder' : value of $(OutDir) (build folder)
+  - 'intfolder' : value of $(IntDir) (intermediate folder)
+
+Sample command line for your Build events (here: PreBuild):
+
+if exist "$(SolutionDir)scripts\$(ProjectName)-PreBuild.wsf" (cscript "$(SolutionDir)scripts\$(ProjectName)-PreBuild.wsf" /event:PostBuild /project:"$(ProjectName)" /platform:"$(PlatformName)" /configuration:"$(Configuration)" /solution:"$(SolutionName)" /settings:"$(SolutionDir)settings.user.props" /deployfolder:"$(DeployVersionFolder)" /outfolder:"$(OutDir)" /intfolder:"$(IntDir)")
+
+ */
+//------------------------------------------------------------------------------
 (function(){
   var errors = [];
-  g_args = getArgs({
+  var args = getArgs({
     'event': {
-      name: 'event name'
+      name: 'Event name'
     },
     'project': {
-      name: 'project name'
+      name: 'Project name'
     },
     'platform': {
-      name: 'platform name'
+      name: 'Platform name'
     },
     'configuration': {
-      name: 'configuration name'
+      name: 'Configuration name'
     },
     'solution': {
-      name: 'solution name'
+      name: 'Solution name'
     },
-    'settings': {
-      name: 'settings file',
-      type: getArgs.settings
+    'deployfolder': {
+      name: 'Deploy folder',
+      get: getArgs.folder,
+      create: true
+    },
+    'outfolder': {
+      name: 'Out Folder',
+      get: getArgs.folder
+    },
+    'intfolder': {
+      name: 'Intermediate folder',
+      get: getArgs.folder
     }
   }, errors);
 
@@ -29,6 +56,12 @@
       WScript.Echo(errors[i]);
     }
     WScript.Quit(-1);
+  }
+  // copy to global settings
+  for (var i in args) {
+    if (args.hasOwnProperty(i)) {
+      settings[i] = args[i];
+    }
   }
 })();
 

@@ -1,0 +1,44 @@
+﻿<job>
+<script language="JScript" src="../../scripts/fso.js"/>
+<script language="JScript" src="../../scripts/getArgs.js"/>
+<script language="JScript" src="../../scripts/settings.js"/>
+<script language="JScript" src="../../scripts/hook.js"/>
+<script language="JScript">
+
+WScript.Echo('###########################################################################');
+WScript.Echo('# Deploying ' + settings.solution + '-' + settings.version + '\n# to folder\n# ' + settings.deployfolder.Path);
+
+var includeFolder = 'include';
+var libFolder = 'lib';
+var docsFolder = 'docs';
+var testsFolder = 'tests';
+
+var destincludePath = fs.createFolderR(settings.deployfolder.Path + '\\' + includeFolder);
+var destDocsPath = fs.createFolderR(settings.deployfolder.Path + '\\' + docsFolder);
+var destLibPath = fs.createFolderR(settings.deployfolder.Path + '\\' + libFolder + '\\' + settings.configuration + '_' + settings.platform);
+var destTestsPath = fs.createFolderR(settings.deployfolder.Path + '\\' + testsFolder + '\\' + settings.configuration + '_' + settings.platform);
+
+//------------------------------------------------------------------------------
+// copy documentation
+WScript.Echo('\nCopying documentation...');
+fs.syncFolder(fso.GetFolder('..\\..\\docs\\html'), destDocsPath);
+fso.CopyFile('..\\..\\README.md', settings.deployfolder.Path + '\\');
+fso.CopyFile('..\\Documentation\\_index-redirect_.html', settings.deployfolder.Path + '\\' + settings.solution + '.html');
+
+//------------------------------------------------------------------------------
+// copy binaries
+// libs
+WScript.Echo('\nCopying lib...');
+fso.CopyFile(settings.outfolder + '\\libAjvar.lib', destLibPath.Path + '\\');
+// tests
+WScript.Echo('\nCopying test...');
+fso.CopyFile(settings.outfolder + '\\libAjvarTests.exe', destTestsPath.Path + '\\');
+
+//------------------------------------------------------------------------------
+// copy includes
+WScript.Echo('\nCopying includes...');
+fs.syncFolder(fso.GetFolder('..\\libAjvar\\include'), destincludePath);
+WScript.Echo('###########################################################################\n');
+
+</script>
+</job>

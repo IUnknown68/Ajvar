@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="tests">
+      <UniqueIdentifier>{E5362B6C-6B3E-4510-9BC5-CB968B1CD22B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mocks">
+      <UniqueIdentifier>{697C4C35-2559-4A76-863F-E84C21FD0977}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\PropertiesTest.cpp">
+      <Filter>tests</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TimeTest.cpp">
+      <Filter>tests</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DebugTest.cpp">
+      <Filter>tests</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AtlModule.cpp" />
+    <ClCompile Include="src\GlobalInterfaceTest.cpp">
+      <Filter>tests</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\AtlModule.h" />
+  </ItemGroup>
+</Project>

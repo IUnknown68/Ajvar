@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="include\Dispatch\Ex\Connector.h">
+      <Filter>Dispatch\Ex</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Dispatch\Ex\Ex.h">
+      <Filter>Dispatch\Ex</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Dispatch\Connector.h">
+      <Filter>Dispatch</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Dispatch\Dispatch.h">
+      <Filter>Dispatch</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Dispatch\Object.h">
+      <Filter>Dispatch</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Dispatch\RefVariant.h">
+      <Filter>Dispatch</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Ajvar.h">
+      <Filter>Ajvar</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Ajvar</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Dispatch\Ex\Properties.h">
+      <Filter>Dispatch\Ex</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Error\ErrorStrings.h">
+      <Filter>Error</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Time\Time.h">
+      <Filter>Time</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Sync\CriticalSection.h">
+      <Filter>Sync</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Sync\Lock.h">
+      <Filter>Sync</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Debug\ComObjectDebugging.h">
+      <Filter>Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Dispatch\Ex\Proxy.h">
+      <Filter>Dispatch\Ex</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Dispatch\Proxy.h">
+      <Filter>Dispatch</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GlobalInterface\GlobalInterface.h">
+      <Filter>GlobalInterface</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Browser\DocumentSink.h">
+      <Filter>Browser</Filter>
+    </ClInclude>
+    <ClInclude Include="include\_Version.h">
+      <Filter>Ajvar</Filter>
+    </ClInclude>
+    <ClInclude Include="src\targetspecs\targetver.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Dispatch\Ex\Ex.cpp">
+      <Filter>Dispatch\Ex</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Ajvar</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dispatch\Ex\Properties.cpp">
+      <Filter>Dispatch\Ex</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Error\ErrorStrings.cpp">
+      <Filter>Error</Filter>
+    </ClCompile>
+    <ClCompile Include="src\_Version.cpp">
+      <Filter>Ajvar</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="targetspecs">
+      <UniqueIdentifier>{63010e37-ba58-4d42-b9f3-a48c5b594076}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Dispatch">
+      <UniqueIdentifier>{1afcd8aa-e400-4ef7-8ae1-b9b13a759eec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Dispatch\Ex">
+      <UniqueIdentifier>{798e5f29-1355-48f1-9366-0956a371dab2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Error">
+      <UniqueIdentifier>{d76dacad-c2d9-491b-a556-1ded916939e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Time">
+      <UniqueIdentifier>{f4dad915-d116-443e-af3e-701ee3327b8c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sync">
+      <UniqueIdentifier>{f5739b26-4fb2-4ad8-8655-7e4e470f5177}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Debug">
+      <UniqueIdentifier>{f673b46e-6ee6-4553-9010-b85aa42c5fea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GlobalInterface">
+      <UniqueIdentifier>{6a196df7-af19-4d9c-9b00-80645a8ec898}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Browser">
+      <UniqueIdentifier>{52de3455-ddf6-4316-81ba-ecc65a10bd1b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Ajvar">
+      <UniqueIdentifier>{52507778-e828-4b18-8f34-129584329cdc}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
