@@ -5,17 +5,16 @@
   <PropertyGroup />
   <ItemDefinitionGroup>
     <CustomBuild>
-      <Command>cscript.exe /E:JScript "$(SolutionDir)scripts\createZip.js" /s:"$(DeployVersionFolder)"</Command>
+      <Command>cscript.exe "$(SolutionDir)scripts\createZip.wsf" /deployfolder:"$(DeployVersionFolder)"</Command>
     </CustomBuild>
     <CustomBuild>
       <Message>Deploying project...</Message>
       <LinkObjects>false</LinkObjects>
       <TreatOutputAsContent>false</TreatOutputAsContent>
-      <Outputs>$(DeployVersionFolder).zip;$(DeployVersionFolder);%(Outputs)</Outputs>
+      <Outputs>$(DeployVersionFolder).zip;%(Outputs)</Outputs>
+      <AdditionalInputs>$(DeployVersionFolder);%(AdditionalInputs)</AdditionalInputs>
     </CustomBuild>
-    <CustomBuildStep>
-      <Outputs>$(DeployFolder)%(Filename)-$(VersionString);%(Outputs)</Outputs>
-    </CustomBuildStep>
+    <CustomBuildStep />
   </ItemDefinitionGroup>
   <ItemGroup />
 </Project>

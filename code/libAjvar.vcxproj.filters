@@ -23,10 +23,10 @@
       <Filter>Dispatch</Filter>
     </ClInclude>
     <ClInclude Include="src\libAjvar\include\Ajvar.h">
-      <Filter>general</Filter>
+      <Filter>Ajvar</Filter>
     </ClInclude>
     <ClInclude Include="src\libAjvar\stdafx.h">
-      <Filter>general</Filter>
+      <Filter>Ajvar</Filter>
     </ClInclude>
     <ClInclude Include="src\libAjvar\include\Dispatch\Ex\Properties.h">
       <Filter>Dispatch\Ex</Filter>
@@ -59,7 +59,7 @@
       <Filter>Browser</Filter>
     </ClInclude>
     <ClInclude Include="src\libAjvar\include\_Version.h">
-      <Filter>general</Filter>
+      <Filter>Ajvar</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -67,7 +67,7 @@
       <Filter>Dispatch\Ex</Filter>
     </ClCompile>
     <ClCompile Include="src\libAjvar\stdafx.cpp">
-      <Filter>general</Filter>
+      <Filter>Ajvar</Filter>
     </ClCompile>
     <ClCompile Include="src\libAjvar\src\Dispatch\Ex\Properties.cpp">
       <Filter>Dispatch\Ex</Filter>
@@ -76,7 +76,7 @@
       <Filter>Error</Filter>
     </ClCompile>
     <ClCompile Include="src\libAjvar\src\_Version.cpp">
-      <Filter>general</Filter>
+      <Filter>Ajvar</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -88,9 +88,6 @@
     </Filter>
     <Filter Include="Dispatch\Ex">
       <UniqueIdentifier>{798e5f29-1355-48f1-9366-0956a371dab2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="general">
-      <UniqueIdentifier>{52507778-e828-4b18-8f34-129584329cdc}</UniqueIdentifier>
     </Filter>
     <Filter Include="Error">
       <UniqueIdentifier>{d76dacad-c2d9-491b-a556-1ded916939e4}</UniqueIdentifier>
@@ -109,6 +106,9 @@
     </Filter>
     <Filter Include="Browser">
       <UniqueIdentifier>{52de3455-ddf6-4316-81ba-ecc65a10bd1b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Ajvar">
+      <UniqueIdentifier>{52507778-e828-4b18-8f34-129584329cdc}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -9,7 +9,6 @@
 
 namespace Ajvar {
 
-  
 /// @brief Helpers for debugging COM
 /// @details `Ajvar::Debug` contains some classes for debugging COM object
 /// lifetime management. There is a global map storing information about
@@ -17,7 +16,7 @@ namespace Ajvar {
 /// `CComObjectRootEx`. When a new object is created it gets added to the map,
 /// when it gets destroyed, it gets removed. So to see which objects are
 /// leaking you would dump the map right before your process exits.
-/// @note This is not thread safe, and the implementation is rather simple.
+/// @attention This is not thread safe, and the implementation is rather simple.
 /// It was originally created for one single bug, so use with care!
 /// @note Uses RTTI.
 ///
@@ -205,7 +204,9 @@ public:
   /// @brief Equivalent for `CComObjectRootEx::_AtlInitialConstruct()`
   HRESULT _AtlInitialConstruct()
   {
+#ifdef _DEBUG
     _D_COM_Created();
+#endif  
     return m_critsec.Init();
   }
 
@@ -271,7 +272,9 @@ public:
   /// @brief Equivalent for `CComObjectRootEx::_AtlInitialConstruct()`
   HRESULT _AtlInitialConstruct()
   {
+#ifdef _DEBUG
     _D_COM_Created();
+#endif  
     return S_OK;
   }
 

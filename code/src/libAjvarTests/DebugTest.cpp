@@ -37,7 +37,12 @@ TEST(DebugTest, Leak)
     ASSERT_HRESULT_SUCCEEDED(hr);
     instance->AddRef();
   } while(0);
+#ifdef _DEBUG
   ASSERT_FALSE(_D_IsObjectMapEmpty());
+#else
+// release versions never track!
+  ASSERT_TRUE(_D_IsObjectMapEmpty());
+#endif // def _DEBUG
 }
 
 

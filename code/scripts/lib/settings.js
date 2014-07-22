@@ -1,7 +1,7 @@
 ﻿var settings = getArgs({
   'settings': {
     name: 'settings file',
-    type: getArgs.settings
+    get: getArgs.settings
   }
 }).settings;
 

@@ -75,6 +75,7 @@ control (`IWebBrowser`).
 - `IF_FAILED_BREAK()`
 - `IF_NULL_RET()`
 - `IS_VTERR()`
+
 ***************************************************************************/
 #pragma once
 

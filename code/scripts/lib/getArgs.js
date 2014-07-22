@@ -15,7 +15,7 @@ function getArgs(options, errors) {
         if (!argName) {
           throw new Error("is missing");
         }
-        args[i] = (option.type || getArgs._default)(WScript.Arguments.Named.Item(argName));
+        args[i] = (option.get || getArgs._default)(WScript.Arguments.Named.Item(argName), option);
       }
       catch(e) {
         var s = "Argument '" + i + "' (" + option.name + ') ' + e.description + '.';
@@ -33,7 +33,10 @@ getArgs.file = function(aValue) {
   return fso.GetFile(fso.GetAbsolutePathName(aValue));
 };
 
-getArgs.folder = function(aValue) {
+getArgs.folder = function(aValue, aOption) {
+  if (aOption.create) {
+    return fs.createFolderR(fso.GetAbsolutePathName(aValue));
+  }
   return fso.GetFolder(fso.GetAbsolutePathName(aValue));
 };
 
