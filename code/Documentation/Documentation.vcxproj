@@ -11,23 +11,22 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{D0210371-2AE5-4565-A2D4-4304C0DD2325}</ProjectGuid>
-    <Keyword>Win32Proj</Keyword>
-    <RootNamespace>Ajvar</RootNamespace>
+    <ProjectGuid>{F4D3ED01-F30F-448D-B542-CE79FEB5C447}</ProjectGuid>
+    <RootNamespace>Documentation</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Utility</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v110</PlatformToolset>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Utility</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v110</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -48,63 +47,54 @@
   <PropertyGroup />
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <CustomBuild>
+      <Command>"$(Doxygen)" "%(FullPath)"</Command>
+    </CustomBuild>
+    <CustomBuild>
+      <Message>Generating documentation...</Message>
+    </CustomBuild>
+    <CustomBuild>
+      <Outputs>$(SolutionDir)..\docs\html\index.html;%(Outputs)</Outputs>
+      <LinkObjects>false</LinkObjects>
+    </CustomBuild>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
-      <PrecompiledHeader>Use</PrecompiledHeader>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
+    <CustomBuild>
+      <Outputs>$(SolutionDir)..\docs\html\index.html;%(Outputs)</Outputs>
+      <Command>"$(Doxygen)" "%(FullPath)"</Command>
+      <Message>Generating documentation...</Message>
+      <LinkObjects>false</LinkObjects>
+    </CustomBuild>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\libAjvar\include\Ajvar.h" />
-    <ClInclude Include="src\libAjvar\include\Browser\DocumentSink.h" />
-    <ClInclude Include="src\libAjvar\include\Debug\ComObjectDebugging.h" />
-    <ClInclude Include="src\libAjvar\include\_Version.h" />
-    <ClInclude Include="src\libAjvar\include\Dispatch\Connector.h" />
-    <ClInclude Include="src\libAjvar\include\Dispatch\Dispatch.h" />
-    <ClInclude Include="src\libAjvar\include\Dispatch\Ex\Connector.h" />
-    <ClInclude Include="src\libAjvar\include\Dispatch\Ex\Proxy.h" />
-    <ClInclude Include="src\libAjvar\include\Dispatch\Ex\Ex.h" />
-    <ClInclude Include="src\libAjvar\include\Dispatch\Ex\Properties.h" />
-    <ClInclude Include="src\libAjvar\include\Dispatch\Object.h" />
-    <ClInclude Include="src\libAjvar\include\Dispatch\Proxy.h" />
-    <ClInclude Include="src\libAjvar\include\Dispatch\RefVariant.h" />
-    <ClInclude Include="src\libAjvar\include\Error\ErrorStrings.h" />
-    <ClInclude Include="src\libAjvar\include\GlobalInterface\GlobalInterface.h" />
-    <ClInclude Include="src\libAjvar\include\Sync\CriticalSection.h" />
-    <ClInclude Include="src\libAjvar\include\Sync\Lock.h" />
-    <ClInclude Include="src\libAjvar\include\Time\Time.h" />
-    <ClInclude Include="src\libAjvar\stdafx.h" />
-    <ClInclude Include="src\targetspecs\targetver.h" />
+    <CustomBuild Include="Doxyfile">
+      <FileType>Document</FileType>
+    </CustomBuild>
+    <None Include="footer.html" />
+    <None Include="header.html" />
+    <None Include="stylesheet.css" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\libAjvar\src\Dispatch\Ex\Ex.cpp" />
-    <ClCompile Include="src\libAjvar\src\Dispatch\Ex\Properties.cpp" />
-    <ClCompile Include="src\libAjvar\src\Error\ErrorStrings.cpp" />
-    <ClCompile Include="src\libAjvar\src\_Version.cpp" />
-    <ClCompile Include="src\libAjvar\stdafx.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
-    </ClCompile>
+    <Image Include="salsita_logo.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

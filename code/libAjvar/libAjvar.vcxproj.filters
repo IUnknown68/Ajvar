@@ -1,81 +1,81 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClInclude Include="src\targetspecs\targetver.h">
+    <ClInclude Include="..\src\targetspecs\targetver.h">
       <Filter>targetspecs</Filter>
     </ClInclude>
-    <ClInclude Include="src\libAjvar\include\Dispatch\Ex\Connector.h">
+    <ClInclude Include="include\Dispatch\Ex\Connector.h">
       <Filter>Dispatch\Ex</Filter>
     </ClInclude>
-    <ClInclude Include="src\libAjvar\include\Dispatch\Ex\Ex.h">
+    <ClInclude Include="include\Dispatch\Ex\Ex.h">
       <Filter>Dispatch\Ex</Filter>
     </ClInclude>
-    <ClInclude Include="src\libAjvar\include\Dispatch\Connector.h">
+    <ClInclude Include="include\Dispatch\Connector.h">
       <Filter>Dispatch</Filter>
     </ClInclude>
-    <ClInclude Include="src\libAjvar\include\Dispatch\Dispatch.h">
+    <ClInclude Include="include\Dispatch\Dispatch.h">
       <Filter>Dispatch</Filter>
     </ClInclude>
-    <ClInclude Include="src\libAjvar\include\Dispatch\Object.h">
+    <ClInclude Include="include\Dispatch\Object.h">
       <Filter>Dispatch</Filter>
     </ClInclude>
-    <ClInclude Include="src\libAjvar\include\Dispatch\RefVariant.h">
+    <ClInclude Include="include\Dispatch\RefVariant.h">
       <Filter>Dispatch</Filter>
     </ClInclude>
-    <ClInclude Include="src\libAjvar\include\Ajvar.h">
+    <ClInclude Include="include\Ajvar.h">
       <Filter>Ajvar</Filter>
     </ClInclude>
-    <ClInclude Include="src\libAjvar\stdafx.h">
+    <ClInclude Include="stdafx.h">
       <Filter>Ajvar</Filter>
     </ClInclude>
-    <ClInclude Include="src\libAjvar\include\Dispatch\Ex\Properties.h">
+    <ClInclude Include="include\Dispatch\Ex\Properties.h">
       <Filter>Dispatch\Ex</Filter>
     </ClInclude>
-    <ClInclude Include="src\libAjvar\include\Error\ErrorStrings.h">
+    <ClInclude Include="include\Error\ErrorStrings.h">
       <Filter>Error</Filter>
     </ClInclude>
-    <ClInclude Include="src\libAjvar\include\Time\Time.h">
+    <ClInclude Include="include\Time\Time.h">
       <Filter>Time</Filter>
     </ClInclude>
-    <ClInclude Include="src\libAjvar\include\Sync\CriticalSection.h">
+    <ClInclude Include="include\Sync\CriticalSection.h">
       <Filter>Sync</Filter>
     </ClInclude>
-    <ClInclude Include="src\libAjvar\include\Sync\Lock.h">
+    <ClInclude Include="include\Sync\Lock.h">
       <Filter>Sync</Filter>
     </ClInclude>
-    <ClInclude Include="src\libAjvar\include\Debug\ComObjectDebugging.h">
+    <ClInclude Include="include\Debug\ComObjectDebugging.h">
       <Filter>Debug</Filter>
     </ClInclude>
-    <ClInclude Include="src\libAjvar\include\Dispatch\Ex\Proxy.h">
+    <ClInclude Include="include\Dispatch\Ex\Proxy.h">
       <Filter>Dispatch\Ex</Filter>
     </ClInclude>
-    <ClInclude Include="src\libAjvar\include\Dispatch\Proxy.h">
+    <ClInclude Include="include\Dispatch\Proxy.h">
       <Filter>Dispatch</Filter>
     </ClInclude>
-    <ClInclude Include="src\libAjvar\include\GlobalInterface\GlobalInterface.h">
+    <ClInclude Include="include\GlobalInterface\GlobalInterface.h">
       <Filter>GlobalInterface</Filter>
     </ClInclude>
-    <ClInclude Include="src\libAjvar\include\Browser\DocumentSink.h">
+    <ClInclude Include="include\Browser\DocumentSink.h">
       <Filter>Browser</Filter>
     </ClInclude>
-    <ClInclude Include="src\libAjvar\include\_Version.h">
+    <ClInclude Include="include\_Version.h">
       <Filter>Ajvar</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\libAjvar\src\Dispatch\Ex\Ex.cpp">
+    <ClCompile Include="src\Dispatch\Ex\Ex.cpp">
       <Filter>Dispatch\Ex</Filter>
     </ClCompile>
-    <ClCompile Include="src\libAjvar\stdafx.cpp">
+    <ClCompile Include="stdafx.cpp">
       <Filter>Ajvar</Filter>
     </ClCompile>
-    <ClCompile Include="src\libAjvar\src\Dispatch\Ex\Properties.cpp">
+    <ClCompile Include="src\Dispatch\Ex\Properties.cpp">
       <Filter>Dispatch\Ex</Filter>
     </ClCompile>
-    <ClCompile Include="src\libAjvar\src\Error\ErrorStrings.cpp">
+    <ClCompile Include="src\Error\ErrorStrings.cpp">
       <Filter>Error</Filter>
     </ClCompile>
-    <ClCompile Include="src\libAjvar\src\_Version.cpp">
+    <ClCompile Include="src\_Version.cpp">
       <Filter>Ajvar</Filter>
     </ClCompile>
   </ItemGroup>

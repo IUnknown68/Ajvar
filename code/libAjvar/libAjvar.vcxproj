@@ -11,22 +11,23 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{F4D3ED01-F30F-448D-B542-CE79FEB5C447}</ProjectGuid>
-    <RootNamespace>Documentation</RootNamespace>
+    <ProjectGuid>{D0210371-2AE5-4565-A2D4-4304C0DD2325}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>Ajvar</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>Utility</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v110</PlatformToolset>
-    <CharacterSet>MultiByte</CharacterSet>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>Utility</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v110</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>MultiByte</CharacterSet>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -47,54 +48,63 @@
   <PropertyGroup />
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
-    <CustomBuild>
-      <Command>"$(Doxygen)" "$(SolutionDir)..\docs\%(Filename)"</Command>
-    </CustomBuild>
-    <CustomBuild>
-      <Message>Generating documentation...</Message>
-    </CustomBuild>
-    <CustomBuild>
-      <Outputs>$(SolutionDir)..\docs\html\index.html;%(Outputs)</Outputs>
-      <LinkObjects>false</LinkObjects>
-    </CustomBuild>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
-    <CustomBuild>
-      <Outputs>$(SolutionDir)..\docs\html\index.html;%(Outputs)</Outputs>
-      <Command>"$(Doxygen)" "$(SolutionDir)..\docs\%(Filename)"</Command>
-      <Message>Generating documentation...</Message>
-      <LinkObjects>false</LinkObjects>
-    </CustomBuild>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <CustomBuild Include="..\docs\Doxyfile">
-      <FileType>Document</FileType>
-    </CustomBuild>
-    <None Include="..\docs\footer.html" />
-    <None Include="..\docs\header.html" />
-    <None Include="..\docs\stylesheet.css" />
+    <ClInclude Include="include\Ajvar.h" />
+    <ClInclude Include="include\Browser\DocumentSink.h" />
+    <ClInclude Include="include\Debug\ComObjectDebugging.h" />
+    <ClInclude Include="include\_Version.h" />
+    <ClInclude Include="include\Dispatch\Connector.h" />
+    <ClInclude Include="include\Dispatch\Dispatch.h" />
+    <ClInclude Include="include\Dispatch\Ex\Connector.h" />
+    <ClInclude Include="include\Dispatch\Ex\Proxy.h" />
+    <ClInclude Include="include\Dispatch\Ex\Ex.h" />
+    <ClInclude Include="include\Dispatch\Ex\Properties.h" />
+    <ClInclude Include="include\Dispatch\Object.h" />
+    <ClInclude Include="include\Dispatch\Proxy.h" />
+    <ClInclude Include="include\Dispatch\RefVariant.h" />
+    <ClInclude Include="include\Error\ErrorStrings.h" />
+    <ClInclude Include="include\GlobalInterface\GlobalInterface.h" />
+    <ClInclude Include="include\Sync\CriticalSection.h" />
+    <ClInclude Include="include\Sync\Lock.h" />
+    <ClInclude Include="include\Time\Time.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="src\targetspecs\targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\docs\salsita_logo.png" />
+    <ClCompile Include="src\Dispatch\Ex\Ex.cpp" />
+    <ClCompile Include="src\Dispatch\Ex\Properties.cpp" />
+    <ClCompile Include="src\Error\ErrorStrings.cpp" />
+    <ClCompile Include="src\_Version.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -9,21 +9,21 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\libAjvarTests\PropertiesTest.cpp">
+    <ClCompile Include="src\PropertiesTest.cpp">
       <Filter>tests</Filter>
     </ClCompile>
-    <ClCompile Include="src\libAjvarTests\TimeTest.cpp">
+    <ClCompile Include="src\TimeTest.cpp">
       <Filter>tests</Filter>
     </ClCompile>
-    <ClCompile Include="src\libAjvarTests\DebugTest.cpp">
+    <ClCompile Include="src\DebugTest.cpp">
       <Filter>tests</Filter>
     </ClCompile>
-    <ClCompile Include="src\libAjvarTests\AtlModule.cpp" />
-    <ClCompile Include="src\libAjvarTests\GlobalInterfaceTest.cpp">
+    <ClCompile Include="src\AtlModule.cpp" />
+    <ClCompile Include="src\GlobalInterfaceTest.cpp">
       <Filter>tests</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\libAjvarTests\AtlModule.h" />
+    <ClInclude Include="src\AtlModule.h" />
   </ItemGroup>
 </Project>
