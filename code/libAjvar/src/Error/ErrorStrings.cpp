@@ -12,7 +12,7 @@ namespace Ajvar {
 namespace Error {
 
 /// @brief Handler for unknown error codes
-LPCTSTR _DErr_Default(DWORD aError)
+LPCTSTR _DErr_Default(DWORD_PTR aError)
 {
   return _T("???");
 }

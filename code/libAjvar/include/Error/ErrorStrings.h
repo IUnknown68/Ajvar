@@ -30,9 +30,9 @@ LPCTSTR DErrSEVERITY(HRESULT aError);
 /// @brief Returns an `HRESULT` error string.
 LPCTSTR DErrHRESULT(HRESULT aError);
 
-/// @brief Typedef for a function taking an error code (`DWORD`) and returning
+/// @brief Typedef for a function taking an error code (`DWORD_PTR`) and returning
 /// a const TCHAR*
-typedef LPCTSTR (*DErr_type)(DWORD);
+typedef LPCTSTR (*DErr_type)(DWORD_PTR);
 
 /// @{
 /// @brief These are the handlers for unknown error codes. By default they point

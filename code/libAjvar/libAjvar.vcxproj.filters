@@ -1,9 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClInclude Include="..\src\targetspecs\targetver.h">
-      <Filter>targetspecs</Filter>
-    </ClInclude>
     <ClInclude Include="include\Dispatch\Ex\Connector.h">
       <Filter>Dispatch\Ex</Filter>
     </ClInclude>
@@ -61,6 +58,7 @@
     <ClInclude Include="include\_Version.h">
       <Filter>Ajvar</Filter>
     </ClInclude>
+    <ClInclude Include="src\targetspecs\targetver.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Dispatch\Ex\Ex.cpp">
