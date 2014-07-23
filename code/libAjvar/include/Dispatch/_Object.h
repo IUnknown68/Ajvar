@@ -1,10 +1,14 @@
 /**************************************************************************//**
- * @file
- * @brief     Declaration of `Ajvar::Dispatch::_Object`
- * @author    Arne Seib <arne@salsitasoft.com>
- * @copyright 2014 Salsita Software (http://www.salsitasoft.com).
- *****************************************************************************/
+@file
+@brief     Declaration of `Ajvar::Dispatch::Represents`.
+@author    Arne Seib <arne@salsitasoft.com>
+@copyright 2014 Salsita Software (http://www.salsitasoft.com).
+***************************************************************************/
+
 #pragma once
+
+#include "Connector.h"
+#include "RefVariant.h"
 
 namespace Ajvar {
 namespace Dispatch {
@@ -13,8 +17,9 @@ namespace Dispatch {
 /// @class  _Object
 /// @brief  Represents an object with a `IDispatch` or `IDispatchEx` interface.
 /// @details This class represents an object, means, a COM object implementing
-/// `IDispatch` or `IDispatchEx`.
+/// `IDispatch` or `IDispatchEx`. Usually you would use it with script objects.
 ///
+/// To do so it:
 /// - Declares an array access operator `[]` for easy access of the object's
 /// properties.
 /// - Derives from `CComQIPtr<TInterface>` and has additional assignment
@@ -44,7 +49,7 @@ namespace Dispatch {
 /// // assign a new value to "foo"
 /// foo = foo.lVal * 3;
 ///
-/// // in JS 'window.foo' will be changed now!
+/// // in JS 'window.foo' will be changed now.
 ///
 /// // create a new Object
 /// auto message = script.constructNew(L"Object");
@@ -130,7 +135,7 @@ public:
   }
 
   /// @brief Array access operator taking a property name.
-  /// @details  Takes a property name and returns an `ComVariantLVal`
+  /// @details  Takes a property name and returns an `_LVariant`
   /// for that property.
   /// @param[in]  aName Name of the property.
   /// @return  `_LVariant` that can be used as lvalue in assingment.

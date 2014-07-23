@@ -13,9 +13,6 @@
     <ClInclude Include="include\Dispatch\Dispatch.h">
       <Filter>Dispatch</Filter>
     </ClInclude>
-    <ClInclude Include="include\Dispatch\Object.h">
-      <Filter>Dispatch</Filter>
-    </ClInclude>
     <ClInclude Include="include\Dispatch\RefVariant.h">
       <Filter>Dispatch</Filter>
     </ClInclude>
@@ -58,7 +55,12 @@
     <ClInclude Include="include\_Version.h">
       <Filter>Ajvar</Filter>
     </ClInclude>
-    <ClInclude Include="src\targetspecs\targetver.h" />
+    <ClInclude Include="..\targetspecs\targetver.h">
+      <Filter>targetspecs</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Dispatch\_Object.h">
+      <Filter>Dispatch</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Dispatch\Ex\Ex.cpp">

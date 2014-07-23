@@ -10,14 +10,14 @@ namespace Ajvar {
 namespace Dispatch {
 namespace Ex {
 
-/// @brief Our interface type: `IDispatchEx`
+/// @brief Interface for this namespace: `IDispatchEx`
 typedef IDispatchEx _Interface;
 
 //============================================================================
 /// @class  _Connector.
-/// @brief  Connects a `IDispatchEx` property to a VARIANT via `Set()` / `Get()`
+/// @brief  Connects a `IDispatchEx` property to a `VARIANT` via `Set()` / `Get()`
 ///         methods.
-/// @tparam  Flags Flags for `Set()` or 'Get()', e.g. `fdexNameEnsure`.
+/// @tparam  Flags Flags for `Set()` or `Get()`, e.g. `fdexNameEnsure`.
 template<DWORD Flags>
   class _Connector
 {
@@ -26,10 +26,10 @@ public:
   typedef typename _Interface TIf;
 
   /// @brief Get a `DISPID` for `aName`.
-  /// @param aObject  The object to get the property.
+  /// @param aObject  The object to get the id from.
   /// @param aName  Name of the property.
   /// @param[out] aRetVal  Reference to a `DISPID`.
-  static HRESULT GetDISPID(IDispatchEx * aObject, LPCWSTR aName, DISPID & aRetVal)
+  static HRESULT GetDISPID(_Interface * aObject, LPCWSTR aName, DISPID & aRetVal)
   {
     if (nullptr == aObject || nullptr == aName) {
       return E_INVALIDARG;
@@ -38,11 +38,11 @@ public:
   }
 
   /// @brief Get the `VARIANT` for `aDispId` or an error.
-  /// @param aObject  The object to get the property.
+  /// @param aObject  The object to get the property from.
   /// @param aDispId  'DISPID' of the property.
   /// @param[out] aRetVal  Reference to a `VARIANT` receiving the property or an error.
   /// @return `HRESULT`. In case of an error `aRetVal` is set to `VT_ERROR` and contains the same `HRESULT`.
-  static HRESULT Get(IDispatchEx * aObject, DISPID aDispId, VARIANT & aRetVal)
+  static HRESULT Get(_Interface * aObject, DISPID aDispId, VARIANT & aRetVal)
   {
     if (nullptr == aObject) {
       return E_INVALIDARG;
@@ -68,7 +68,7 @@ public:
   /// @brief Get the `VARIANT` for `aName` or an error.
   /// @see Get(TInterface * aObject, DISPID aDispId, VARIANT & aRetVal)
   /// @param[out] aDispIdRet  If not null, receiving the `DISPID` for `aName`.
-  static HRESULT Get(IDispatchEx * aObject, LPCWSTR aName, VARIANT & aRetVal, DISPID * aDispIdRet = nullptr)
+  static HRESULT Get(_Interface * aObject, LPCWSTR aName, VARIANT & aRetVal, DISPID * aDispIdRet = nullptr)
   {
     if (nullptr == aObject || nullptr == aName) {
       return E_INVALIDARG;
@@ -89,10 +89,10 @@ public:
   }
 
   /// @brief Set property `aDispId` to `aValue`.
-  /// @param aObject  The object to get the property.
+  /// @param aObject  The object to set the property to.
   /// @param aDispId  'DISPID' of the property.
   /// @param aValue The new value.
-  static HRESULT Set(IDispatchEx * aObject, DISPID aDispId, VARIANT & aValue)
+  static HRESULT Set(_Interface * aObject, DISPID aDispId, VARIANT & aValue)
   {
     if (nullptr == aObject) {
       return E_INVALIDARG;
@@ -122,8 +122,8 @@ public:
   }
 
   /// @brief Set property `aName` to `aValue`.
-  /// @see Set(TInterface * aObject, DISPID aDispId, VARIANT & aValue)
-  static HRESULT Set(IDispatchEx * aObject, LPCWSTR aName, VARIANT & aValue)
+  /// @see Set(_Interface * aObject, DISPID aDispId, VARIANT & aValue)
+  static HRESULT Set(_Interface * aObject, LPCWSTR aName, VARIANT & aValue)
   {
     if (nullptr == aObject || nullptr == aName) {
       return E_INVALIDARG;

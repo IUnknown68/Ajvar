@@ -164,22 +164,34 @@ typedef ATL::CComBSTR ComBSTR;
 
 } // namespace Ajvar
 
-#include "Debug/ComObjectDebugging.h"
-
-#include "Time/Time.h"
-
-#include "Sync/CriticalSection.h"
-#include "Sync/Lock.h"
-
 #include "_Version.h"
-#include "Dispatch/Connector.h"
-#include "Dispatch/RefVariant.h"
-#include "Dispatch/Object.h"
-#include "Dispatch/Dispatch.h"
-#include "Dispatch/Proxy.h"
 
-#include "Dispatch/Ex/Ex.h"
-#include "Dispatch/Ex/Properties.h"
-#include "Dispatch/Ex/Proxy.h"
+#ifndef AJ_NO_COMOBJECTDEBUGGING
+#  include "Debug/ComObjectDebugging.h"
+#endif // ndef AJ_NO_COMOBJECTDEBUGGING
 
-#include "GlobalInterface/GlobalInterface.h"
+#ifndef AJ_NO_TIME
+#  include "Time/Time.h"
+#endif // ndef AJ_NO_TIME
+
+#ifndef AJ_NO_SYNC
+#  include "Sync/CriticalSection.h"
+#  include "Sync/Lock.h"
+#endif // ndef AJ_NO_SYNC
+
+#ifndef AJ_NO_DISPATCH
+#  include "Dispatch/Dispatch.h"
+#  include "Dispatch/Proxy.h"
+#endif // ndef AJ_NO_DISPATCH
+
+#ifndef AJ_NO_DISPATCHEX
+#  ifdef AJ_NO_DISPATCH
+#    error When using the IDispatchEx-functions you also have to enable the IDispatch-functions.
+#  endif // def AJ_NO_DISPATCH
+#  include "Dispatch/Ex/Ex.h"
+#  include "Dispatch/Ex/Proxy.h"
+#endif // ndef AJ_NO_DISPATCHEX
+
+#ifndef AJ_NO_GLOBALINTERFACETABLE
+#  include "GlobalInterface/GlobalInterface.h"
+#endif // ndef AJ_NO_GLOBALINTERFACETABLE

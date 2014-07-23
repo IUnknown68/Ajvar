@@ -1,6 +1,6 @@
 /**************************************************************************//**
 @file
-@brief     class Ajvar::Debug::AjvarComObjectRootEx and related stuff.
+@brief     COM debugging.
 @author    Arne Seib <arne@salsitasoft.com>
 @copyright 2014 Salsita Software (http://www.salsitasoft.com).
 ***************************************************************************/
@@ -12,13 +12,19 @@ namespace Ajvar {
 /// @brief Helpers for debugging COM
 /// @details `Ajvar::Debug` contains some classes for debugging COM object
 /// lifetime management. There is a global map storing information about
-/// all COM objects implemented using `AjvarComObjectRootEx`, which replaces
-/// `CComObjectRootEx`. When a new object is created it gets added to the map,
-/// when it gets destroyed, it gets removed. So to see which objects are
-/// leaking you would dump the map right before your process exits.
+/// all COM objects implemented using `AjvarComObjectRootEx`, which acts as
+/// an replacement for `CComObjectRootEx`.
+///
+/// When a new object is created it gets added to the map, when it gets
+/// destroyed, it gets removed. So to see which objects are leaking you
+/// would dump the map (`_D_DumpCOMObjects()`) right before your process exits.
+///
+/// Additionally it traces all calls to `AddRef()` and `Release()`.
+///
 /// @attention This is not thread safe, and the implementation is rather simple.
-/// It was originally created for one single bug, so use with care!
-/// @note Uses RTTI.
+/// It was originally created for one single bug, so don't blame me for anything...
+///
+/// @note Requires RTTI.
 ///
 /// Using it is quite simple:
 /// - Define `_DEBUG_COM_OBJECTS` in your debug builds before including

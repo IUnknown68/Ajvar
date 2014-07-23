@@ -92,7 +92,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <CustomBuild>
-      <Command>"$(Doxygen)" "%(FullPath)"</Command>
+      <Command>( type "%(FullPath)" &amp; echo PROJECT_NUMBER=$(VersionString) ) | "$(Doxygen)" -</Command>
     </CustomBuild>
     <CustomBuild>
       <Message>Generating documentation...</Message>
@@ -112,7 +112,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <CustomBuild>
-      <Command>"$(Doxygen)" "%(FullPath)"</Command>
+      <Command>( type "%(FullPath)" &amp; echo PROJECT_NUMBER=$(VersionString) ) | "$(Doxygen)" -</Command>
     </CustomBuild>
     <CustomBuild>
       <Message>Generating documentation...</Message>
@@ -137,7 +137,7 @@
     </Link>
     <CustomBuild>
       <Outputs>$(SolutionDir)..\docs\html\index.html;%(Outputs)</Outputs>
-      <Command>"$(Doxygen)" "%(FullPath)"</Command>
+      <Command>( type "%(FullPath)" &amp; echo PROJECT_NUMBER=$(VersionString) ) | "$(Doxygen)" -</Command>
       <Message>Generating documentation...</Message>
       <LinkObjects>false</LinkObjects>
     </CustomBuild>
@@ -157,7 +157,7 @@
     </Link>
     <CustomBuild>
       <Outputs>$(SolutionDir)..\docs\html\index.html;%(Outputs)</Outputs>
-      <Command>"$(Doxygen)" "%(FullPath)"</Command>
+      <Command>( type "%(FullPath)" &amp; echo PROJECT_NUMBER=$(VersionString) ) | "$(Doxygen)" -</Command>
       <Message>Generating documentation...</Message>
       <LinkObjects>false</LinkObjects>
     </CustomBuild>

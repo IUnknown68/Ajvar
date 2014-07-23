@@ -140,6 +140,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\targetspecs\targetver.h" />
     <ClInclude Include="include\Ajvar.h" />
     <ClInclude Include="include\Browser\DocumentSink.h" />
     <ClInclude Include="include\Debug\ComObjectDebugging.h" />
@@ -150,7 +151,7 @@
     <ClInclude Include="include\Dispatch\Ex\Proxy.h" />
     <ClInclude Include="include\Dispatch\Ex\Ex.h" />
     <ClInclude Include="include\Dispatch\Ex\Properties.h" />
-    <ClInclude Include="include\Dispatch\Object.h" />
+    <ClInclude Include="include\Dispatch\_Object.h" />
     <ClInclude Include="include\Dispatch\Proxy.h" />
     <ClInclude Include="include\Dispatch\RefVariant.h" />
     <ClInclude Include="include\Error\ErrorStrings.h" />
@@ -159,7 +160,6 @@
     <ClInclude Include="include\Sync\Lock.h" />
     <ClInclude Include="include\Time\Time.h" />
     <ClInclude Include="stdafx.h" />
-    <ClInclude Include="src\targetspecs\targetver.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Dispatch\Ex\Ex.cpp" />

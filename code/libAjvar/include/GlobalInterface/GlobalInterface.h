@@ -1,6 +1,6 @@
 /**************************************************************************//**
 @file
-@brief     
+@brief     Global inteface table handling.
 @author    Arne Seib <arne@salsitasoft.com>
 @copyright 2014 Salsita Software (http://www.salsitasoft.com).
 ***************************************************************************/
@@ -8,8 +8,11 @@
 
 namespace Ajvar {
 
+#ifdef AJ_USE_GLOBALINTERFACE
+
 /// @brief A class for storing COM objects in the global interface table.
-/// Wraps `IGlobalInterfaceTable`.
+/// @details Contains a `IGlobalInterfaceTable` and a cookie for an object
+/// stored in the global interface table. Can set, get and revoke the object.
 template <typename TInterface>
   class GlobalInterface
 {
@@ -103,5 +106,7 @@ private:
   ATL::CComPtr<IGlobalInterfaceTable> mGlobalInterfaceTable;
   DWORD mCookie;
 };
+
+#endif // def AJ_USE_GLOBALINTERFACE
 
 } // namespace Ajvar

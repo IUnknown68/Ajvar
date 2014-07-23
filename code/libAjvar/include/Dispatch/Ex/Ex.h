@@ -1,28 +1,28 @@
 /**************************************************************************//**
- * @file
- * @brief     Main include file for `Ajvar::Dispatch::Ex`
- * @author    Arne Seib <arne@salsitasoft.com>
- * @copyright 2014 Salsita Software (http://www.salsitasoft.com).
- *****************************************************************************/
+@file
+@brief     Main include file for `Ajvar::Dispatch::Ex`
+@author    Arne Seib <arne@salsitasoft.com>
+@copyright 2014 Salsita Software (http://www.salsitasoft.com).
+***************************************************************************/
+
 #pragma once
 
+#include "Properties.h"
 #include "Connector.h"
 
 namespace Ajvar {
 namespace Dispatch {
 
 //============================================================================
-/// @brief Namespace for `IDispatchEx` retlated stuff in ATL Extensions.
-/// @details
-/// Classes: `ObjectCreate`, `ObjectGet`, `Object` (=`ObjectGet`)
+/// @brief Namespace for `IDispatchEx` related stuff in ATL Extensions.
 namespace Ex {
 
 /// @brief Type for a function passed to `forEach`
 /// @details The callback takes the following arguments:
-/// - HRESULT aResult : Result from getting the property. Can be an error.
-/// - BSTR aName      : Name of the property. May be invalid when `aResult` is an error.
-/// - DISPID aDispId  : DISPID of the current value. May be invalid when `aResult` is an error.
-/// - VARIANT aValue  : The actual value. May be invalid when `aResult` is an error.
+/// - `HRESULT aResult` : Result from getting the property. Can be an error.
+/// - `BSTR aName`      : Name of the property. May be invalid when `aResult` is an error.
+/// - `DISPID aDispId`  : `DISPID` of the current value. May be invalid when `aResult` is an error.
+/// - `VARIANT aValue`  : The actual value. May be invalid when `aResult` is an error.
 typedef
   std::function<HRESULT(HRESULT aResult, const BSTR & aName, const DISPID aDispId, const VARIANT & aValue)>
     EachDispEx;
@@ -31,16 +31,18 @@ typedef
 HRESULT forEach(IDispatchEx * aDispEx, EachDispEx aEach, DWORD aEnumFlags = fdexEnumAll|fdexEnumDefault);
 
 /// @brief `IDispatchEx` based object with autocreating properties.
+/// @details This is the class you will actually use.
 /// Compatible with CComQIPtr<IDispatchEx>.
 typedef _Object<_Interface, ConnectorCreate>
   ObjectCreate;
 
 /// @brief `IDispatchEx` based object **not** autocreating properties.
+/// @details This is the class you will actually use.
 /// Compatible with CComQIPtr<IDispatchEx>.
 typedef _Object<_Interface, ConnectorGet>
   ObjectGet;
 
-/// @brief Default: Create properties.
+/// @brief Default object type: Auto-creating properties.
 typedef ObjectCreate
   Object;
 

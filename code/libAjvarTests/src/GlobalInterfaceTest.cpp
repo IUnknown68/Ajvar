@@ -8,6 +8,8 @@
 
 namespace Ajvar {
 
+#ifdef AJ_USE_GLOBALINTERFACE
+
 MIDL_INTERFACE("D72A6CA5-6691-4DC5-A6F4-76F15D6ADFBF")
 IGlobalInterfaceTestClassInterface : public IUnknown
 {
@@ -56,5 +58,6 @@ TEST(GlobalInterfaceTest, Get)
   ::CoUninitialize();
 }
 
+#endif // def AJ_USE_GLOBALINTERFACE
 
 } //namespace Ajvar

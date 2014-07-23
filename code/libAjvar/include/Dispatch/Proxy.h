@@ -1,6 +1,6 @@
 /**************************************************************************//**
 @file
-@brief     
+@brief     IDispatch-Proxy
 @author    Arne Seib <arne@salsitasoft.com>
 @copyright 2014 Salsita Software (http://www.salsitasoft.com).
 ***************************************************************************/
@@ -10,16 +10,16 @@
 namespace Ajvar {
 namespace Dispatch {
 
-// used by Dispatch::Proxy
+/// @brief Forwards a call to `mTarget`.
 #define FORWARD_CALL(_name, ...) \
-    { \
-      return (mTarget) ? mTarget->_name(__VA_ARGS__) : E_UNEXPECTED;  \
-    }
+{ \
+  return (mTarget) ? mTarget->_name(__VA_ARGS__) : E_UNEXPECTED;  \
+}
 
 // -------------------------------------------------------------------------
 /// @brief Proxy for any `IDispatch` object.
 /// @details Holds a pointer to the target object. By default `Proxy`
-/// forwards all calls to `mTarget`. `TBaseClass`-methods can be overridden
+/// forwards all calls to `mTarget`. `TBaseClass`-methods can be overwritten
 /// in a derived class. `TBaseClass` can be either `IDispatch` or a class
 /// derived from `IDispatch` (typically `IDispatchEx`).
 template<class TBaseClass = IDispatch>
@@ -43,6 +43,7 @@ public:
         FORWARD_CALL(Invoke, aDISPID, aRefIID, aLCID, aFlags, aDispParams,
             aVariantRet, aExcepInfo, aArgumentErrors)
 
+  /// @brief Connected `TBaseClass` object.
   ATL::CComQIPtr<TBaseClass> mTarget;
 };
 

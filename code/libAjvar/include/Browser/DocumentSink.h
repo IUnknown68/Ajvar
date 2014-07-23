@@ -8,6 +8,8 @@
 #pragma once
 
 namespace Ajvar {
+
+/// @brief This and that for the webbrowser control.
 namespace Browser {
 
 //=============================================================================
@@ -15,17 +17,19 @@ namespace Browser {
 /// @brief   Attaches to a HTML document and listens for readstate change events.
 /// @details This class is a shortcut if you need notifications about document
 /// ready state changes. Derive from this class and override the methods you need:
-/// - OnDocumentLoaded
-/// - OnDocumentInteractive
-/// - OnDocumentComplete
-template<class T>
+/// - `OnDocumentLoading(IHTMLEventObj * aEvent)`
+/// - `OnDocumentLoaded(IHTMLEventObj * aEvent)`
+/// - `OnDocumentInteractive(IHTMLEventObj * aEvent)`
+/// - `OnDocumentComplete(IHTMLEventObj * aEvent)`
+template<UINT nID, class T>
   class DocumentSink :
-    public IDispEventImpl<1, DocumentSink<T>, &DIID_HTMLDocumentEvents2, &LIBID_MSHTML, 4, 0>
+    public IDispEventImpl<nID, DocumentSink<nID, T>, &DIID_HTMLDocumentEvents2, &LIBID_MSHTML, 4, 0>
 {
 public:
-  /// @brief  Typedef for the baseclass.
-  typedef IDispEventImpl<1, DocumentSink<T>, &DIID_HTMLDocumentEvents2, &LIBID_MSHTML, 4, 0> _EventImpl;
+  /// @brief  Typedef for the `IDispEventImpl`.
+  typedef IDispEventImpl<nID, DocumentSink<nID, T>, &DIID_HTMLDocumentEvents2, &LIBID_MSHTML, 4, 0> _EventImpl;
 
+  /// @brief  Numeric `readyState` values.
   enum ReadyState {
     UNINITIALIZED = 0,
     LOADING,
@@ -38,7 +42,7 @@ public:
   DocumentSink();
   virtual ~DocumentSink();
 
-  BEGIN_SINK_MAP(DocumentSink<T>)
+  BEGIN_SINK_MAP(DocumentSink<nID, T>)
     SINK_ENTRY_EX(1, DIID_HTMLDocumentEvents2, DISPID_READYSTATECHANGE, _OnReadyStateChange)
   END_SINK_MAP()
 
@@ -46,7 +50,7 @@ public:
   STDMETHOD_(void, _OnReadyStateChange)(IHTMLEventObj* aEvent);
 
 protected:
-  /// @brief  Stop listening for `readyState` changes.
+  /// @brief  Stop listening for `readyState` changes and detach.
   void UnadviseDocument();
 
   /// @brief  Start listening for `readyState` changes.
@@ -71,31 +75,31 @@ protected:
 // -------------------------------------------------------------------------
 // constructor
 template<class T>
-DocumentSink<T>::DocumentSink()
+DocumentSink<nID, T>::DocumentSink()
   : mReadyState(UNINITIALIZED)
 {
 }
 
 // -------------------------------------------------------------------------
 // destructor
-template<class T>
-DocumentSink<T>::~DocumentSink()
+template<UINT nID, class T>
+DocumentSink<nID, T>::~DocumentSink()
 {
   UnadviseDocument();
 }
 
 // -------------------------------------------------------------------------
 // _OnReadyStateChange
-template<class T>
-STDMETHODIMP_(void) DocumentSink<T>::_OnReadyStateChange(IHTMLEventObj* aEvent)
+template<UINT nID, class T>
+STDMETHODIMP_(void) DocumentSink<nID, T>::_OnReadyStateChange(IHTMLEventObj* aEvent)
 {
   FireCurrent(aEvent);
 }
 
 // -------------------------------------------------------------------------
 // UnadviseDocument
-template<class T>
-void DocumentSink<T>::UnadviseDocument()
+template<UINT nID, class T>
+void DocumentSink<nID, T>::UnadviseDocument()
 {
   if (mDocument) {
     _EventImpl::DispEventUnadvise(mDocument);
@@ -112,11 +116,13 @@ void DocumentSink<T>::UnadviseDocument()
 /// @param    aRunCurrentState  If true, invoke event for current state.
 /// @details  Attaches to document events via `DispEventAdvise`. If there is
 /// already a document, unadvise first.  
+///
 /// If `aRunCurrentState` is true, fire for the current state immediately.
+///
 /// If `FireCurrent()` returns true, the document is already in `complete`
 /// state. In this case we are done, don't advise.
-template<class T>
-HRESULT DocumentSink<T>::AdviseDocument(IDispatch * aDispatch, bool aRunCurrentState)
+template<UINT nID, class T>
+HRESULT DocumentSink<nID, T>::AdviseDocument(IDispatch * aDispatch, bool aRunCurrentState)
 {
   if (mDocument) {
     UnadviseDocument();
@@ -156,9 +162,9 @@ HRESULT DocumentSink<T>::AdviseDocument(IDispatch * aDispatch, bool aRunCurrentS
 
 //----------------------------------------------------------------------------
 // FireCurrent
-/// @return : true if the document is complete or no document is available.
-template<class T>
-bool DocumentSink<T>::FireCurrent(IHTMLEventObj * aEvent = nullptr)
+/// @return true if the document is complete or no document is available.
+template<UINT nID, class T>
+bool DocumentSink<nID, T>::FireCurrent(IHTMLEventObj * aEvent = nullptr)
 {
   if (!mDocument) {
     return true;

@@ -1,9 +1,10 @@
 /**************************************************************************//**
- * @file
- * @brief     Declaration of `Ajvar::Dispatch::RefVariant`.
- * @author    Arne Seib <arne@salsitasoft.com>
- * @copyright 2014 Salsita Software (http://www.salsitasoft.com).
- *****************************************************************************/
+@file
+@brief     Declaration of `Ajvar::Dispatch::RefVariant`.
+@author    Arne Seib <arne@salsitasoft.com>
+@copyright 2014 Salsita Software (http://www.salsitasoft.com).
+***************************************************************************/
+
 #pragma once
 
 namespace Ajvar {
@@ -11,33 +12,38 @@ namespace Dispatch {
 
 //============================================================================
 /// @class  Ajvar::Dispatch::RefVariant
-/// @brief  For using a `CComVariant`-based property as an lvalue.
+/// @brief  Using a `CComVariant`-based property as an lvalue.
 /// @see    _Object
 /// @details A `RefVariant` is returned from `_Object` when
-/// querying a property. It can be used as lvalue in an assignment. It keeps a reference
-/// to the `_Object` (usually `IDispatch` or `IDispatchEx`) it belongs to and sets
-/// the value back on the interface when the assignment operator is called.
-/// Additionally it is a callable, in case the property is a function.
-/// `RefVariant` uses a `TConnector` to get / set the property.
-/// @tparam  TConnector The connector class to use. @See Ajvar::Dispatch::_Connector.
+/// querying a property. It can be used as lvalue in an assignment, since it
+/// keeps a reference to the `_Object` (usually `IDispatch` or `IDispatchEx`)
+/// it belongs to and sets the value back on the interface when the assignment
+/// operator is called. Additionally it is a callable, in case the property
+/// represents a method.
+/// `RefVariant` uses a
+/// @link Ajvar::Dispatch::_Connector
+/// `TConnector`
+/// @endlink
+/// to get / set the property. For a sample see `_Object`.
+/// @tparam  `TConnector` The connector class to use. See `Ajvar::Dispatch::_Connector`.
 template<class TConnector, class TBase = ComVariant>
   class RefVariant :
     public TBase
 {
 public:
-  /// @brief Our interface (usually `IDispatch` or `IDispatchEx`)
+  /// @brief Type of interface we connect to (usually `IDispatch` or `IDispatchEx`).
   typedef typename TConnector::TIf TIf;
 
-  /// @brief Contructor taking a reference to the the object this property
+  /// @brief Constructor taking a reference to the the object this property
   /// belongs to.
   /// @param[in]  ref Reference to the object this property originates from.
+  /// @param[in]  aName Name of the property.
   RefVariant(TIf * aObject, LPCWSTR aName) :
     mObject(aObject), mDispId(0)
   {
     TConnector::Get(mObject, aName, *this, &mDispId);
   }
 
-  /// @{
   /// @brief Assignment operators.
   /// @details  Does assignment via `TBase`, then calls
   /// `Set()` to set this property on the underlying object.
@@ -93,13 +99,13 @@ public:
   ASSIGNMENT(const SAFEARRAY *)
 
 #undef ASSIGNMENT
-  /// @}
 
+#define CALL_ARGUMENT_COUNT 4
+  
   /// @brief Call operator.
   /// @details  Takes up to 4 optional arguments for the call.
   /// The arguments here are in the order as they appear in the callee.
   /// @return   The return value of the call, or an error.
-#define CALL_ARGUMENT_COUNT 4
   ComVariant operator () (
     ComVariant aArg0 = ComVariant(),
     ComVariant aArg1 = ComVariant(),
@@ -126,13 +132,15 @@ public:
   }
 #undef CALL_ARGUMENT_COUNT
 
-  /// @brief Lowlevel call method.
-  /// @param aRetVal Return value of the call, or an error.
+  /// @brief Low-level call method.
+  /// @param [out] aRetVal Return value of the call, or an error.
+  /// @param [in] aArgs Array of `VARIANT`s, arguments to pass in reversed order.
+  /// @param [in] nArgCount Number of arguments.
   /// @details  In case this instance refers to a function, call the function.
   /// This is the lowlevel method, taking a raw `VARIANT` pointer to the arguments,
   /// and the number of arguments in this array.
   ///
-  /// As usual the values are in reversed order.
+  /// As usual for `Invoke(Ex)()` calls, the arguments are in reversed order.
   HRESULT call(
     ComVariant & aRetVal,
     VARIANT * aArgs,

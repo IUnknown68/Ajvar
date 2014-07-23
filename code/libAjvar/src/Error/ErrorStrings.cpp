@@ -1,9 +1,9 @@
 ﻿/**************************************************************************//**
- * @file
- * @brief     Human readable error strings
- * @author    Arne Seib <arne@salsitasoft.com>
- * @copyright 2014 Salsita Software (http://www.salsitasoft.com).
- *****************************************************************************/
+@file
+@brief     Human readable error strings
+@author    Arne Seib <arne@salsitasoft.com>
+@copyright 2014 Salsita Software (http://www.salsitasoft.com).
+***************************************************************************/
 
 #include "stdafx.h"
 #include <Error/ErrorStrings.h>
@@ -11,7 +11,7 @@
 namespace Ajvar {
 namespace Error {
 
-/// @brief Handler for unknown error codes
+/// @brief Default handler for unknown error codes.
 LPCTSTR _DErr_Default(DWORD_PTR aError)
 {
   return _T("???");

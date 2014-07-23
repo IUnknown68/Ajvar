@@ -1,7 +1,7 @@
 /* The standard CSS for doxygen 1.8.6 */
 
 body, table, div, p, dl {
-  font: 400 14px/22px Roboto,sans-serif;
+  font: 400 14px/22px Roboto, "Segoe UI", Arial, sans-serif;
 }
 
 /* @group Heading Levels */
@@ -11,9 +11,9 @@ h1.groupheader {
 }
 
 .title {
-  font: 400 14px/28px Roboto,sans-serif;
+  font: 300 14px/28px Roboto, "Segoe UI", Arial, sans-serif;
   font-size: 150%;
-  font-weight: bold;
+  font-weight: 500;
   margin: 10px 2px;
 }
 
@@ -21,7 +21,7 @@ h2.groupheader {
   border-bottom: 1px solid #ECAD66;
   color: #9E5D13;
   font-size: 150%;
-  font-weight: normal;
+  font-weight: 400;
   margin-top: 1.75em;
   padding-top: 8px;
   padding-bottom: 4px;
@@ -39,6 +39,11 @@ h1, h2, h3, h4, h5, h6 {
   -o-transition: text-shadow 0.5s linear;
   transition: text-shadow 0.5s linear;
   margin-right: 15px;
+  font-weight: 300;
+}
+
+h3 {
+  font-weight: 500;
 }
 
 h1.glow, h2.glow, h3.glow, h4.glow, h5.glow, h6.glow {
@@ -46,7 +51,7 @@ h1.glow, h2.glow, h3.glow, h4.glow, h5.glow, h6.glow {
 }
 
 dt {
-  font-weight: bold;
+  font-weight: 500;
 }
 
 div.multicol {
@@ -79,7 +84,7 @@ p.endtd {
 /* @end */
 
 caption {
-  font-weight: bold;
+  font-weight: 500;
 }
 
 span.legend {
@@ -106,16 +111,22 @@ div.navtab {
   margin-right: 15px;
 }
 
+code {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  color: #555;
+}
+
 /* @group Link Styling */
 
 a {
-  color: #B36A15;
-  font-weight: normal;
+  color: #AC6713;
   text-decoration: none;
 }
 
 .contents a:visited {
-  color: #D07A19;
+  color: #967441;
 }
 
 a:hover {
@@ -123,11 +134,11 @@ a:hover {
 }
 
 a.qindex {
-  font-weight: bold;
+  font-weight: 500;
 }
 
 a.qindexHL {
-  font-weight: bold;
+  font-weight: 500;
   background-color: #EFBC80;
   color: #ffffff;
   border: 1px double #ECAD64;
@@ -138,7 +149,6 @@ a.qindexHL {
 }
 
 a.el {
-  font-weight: bold;
 }
 
 a.elRef {
@@ -228,7 +238,7 @@ span.lineno a:hover {
 
 div.ah {
   background-color: black;
-  font-weight: bold;
+  font-weight: 500;
   color: #ffffff;
   margin-bottom: 3px;
   margin-top: 3px;
@@ -247,7 +257,7 @@ div.ah {
 div.groupHeader {
   margin-left: 16px;
   margin-top: 12px;
-  font-weight: bold;
+  font-weight: 500;
 }
 
 div.groupText {
@@ -257,8 +267,8 @@ div.groupText {
 
 body {
   background-color: white;
-  color: black;
-        margin: 0;
+  color: #333;
+  margin: 0;
 }
 
 div.contents {
@@ -269,7 +279,7 @@ div.contents {
 
 td.indexkey {
   background-color: #FCF2E6;
-  font-weight: bold;
+  font-weight: 500;
   border: 1px solid #F6D7B4;
   margin: 2px 0px 2px 0;
   padding: 2px 10px;
@@ -379,7 +389,7 @@ blockquote {
 /*
 .search {
   color: #003399;
-  font-weight: bold;
+  font-weight: 500;
 }
 
 form.search {
@@ -390,7 +400,7 @@ form.search {
 input.search {
   font-size: 75%;
   color: #000080;
-  font-weight: normal;
+  font-weight: 400;
   background-color: #e8eef2;
 }
 */
@@ -407,7 +417,7 @@ td.tiny {
 
 th.dirtab {
   background: #FCF2E6;
-  font-weight: bold;
+  font-weight: 500;
 }
 
 hr {
@@ -425,6 +435,7 @@ hr.footer {
 table.memberdecls {
   border-spacing: 0px;
   padding: 0px;
+  width: 100%;
 }
 
 .memberdecls td, .fieldtable tr {
@@ -489,7 +500,7 @@ table.memberdecls {
 .memtemplate {
   font-size: 80%;
   color: #D07A19;
-  font-weight: normal;
+  font-weight: 400;
   margin-left: 9px;
 }
 
@@ -524,7 +535,7 @@ table.memberdecls {
 }
 
 .memname {
-        font-weight: bold;
+        font-weight: 500;
         margin-left: 6px;
 }
 
@@ -538,7 +549,7 @@ table.memberdecls {
         border-right: 1px solid #F1C490;
         padding: 6px 0px 6px 0px;
         color: #6D400D;
-        font-weight: bold;
+        font-weight: 500;
         text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.9);
         background-image:url('nav_f.png');
         background-repeat:repeat-x;
@@ -600,11 +611,11 @@ dl.reflist dd {
 }
 
 .paramname {
-  color: #602020;
+  color: #9f3535;
   white-space: nowrap;
 }
 .paramname em {
-  font-style: normal;
+  font-style: 400;
 }
 .paramname code {
         line-height: 14px;
@@ -616,7 +627,7 @@ dl.reflist dd {
 }
 
 .params .paramname, .retval .paramname {
-        font-weight: bold;
+        font-weight: 500;
         vertical-align: top;
 }
 
@@ -744,7 +755,7 @@ div.dynheader {
 }
 
 address {
-  font-style: normal;
+  font-style: 400;
   color: #7D4A0F;
 }
 
@@ -872,7 +883,7 @@ table.fieldtable {
   text-decoration: none;
   outline: none;
   color: #77460E;
-  font-family: 'Lucida Grande',Geneva,Helvetica,Arial,sans-serif;
+  font-family: Roboto, "Segoe UI", Arial, sans-serif;
   text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.9);
   text-decoration: none;
 }
@@ -951,17 +962,21 @@ dl.section
 dl.note
 {
         margin-left:-7px;
-        padding-left: 3px;
+        padding: 0.3em 0 0.3em 0.3em;
         border-left:4px solid;
-        border-color: #D0C000;
+        border-color: #0A6200;
+        color: #0A6200;
+        background-color: #CBFFC6;
 }
 
 dl.warning, dl.attention
 {
         margin-left:-7px;
-        padding-left: 3px;
+        padding: 0.3em 0 0.3em 0.3em;
         border-left:4px solid;
-        border-color: #FF0000;
+        border-color: #a09000;
+        color: #a09000;
+        background-color: #ffffc0;
 }
 
 dl.pre, dl.post, dl.invariant
@@ -975,25 +990,31 @@ dl.pre, dl.post, dl.invariant
 dl.deprecated
 {
         margin-left:-7px;
-        padding-left: 3px;
+        padding: 0.3em 0 0.3em 0.3em;
         border-left:4px solid;
-        border-color: #505050;
+        border-color: #888;
+        color: #888;
+        background-color: #eee;
 }
 
 dl.todo
 {
         margin-left:-7px;
-        padding-left: 3px;
+        padding: 0.3em 0 0.3em 0.3em;
         border-left:4px solid;
-        border-color: #00C0E0;
+        border-color: #007488;
+        color: #007488;
+        background-color: #DFFBFF;
 }
 
 dl.test
 {
         margin-left:-7px;
-        padding-left: 3px;
+        padding: 0.3em 0 0.3em 0.3em;
         border-left:4px solid;
-        border-color: #3030E0;
+        border-color: #18189E;
+        color: #18189E;
+        background-color: #E3E3FB;
 }
 
 dl.bug
@@ -1001,7 +1022,9 @@ dl.bug
         margin-left:-7px;
         padding-left: 3px;
         border-left:4px solid;
-        border-color: #C08050;
+        border-color: #a00000;
+        color: #a00000;
+        background-color: #ffe0d0;
 }
 
 dl.section dd {
@@ -1014,7 +1037,6 @@ dl.section dd {
 
 #hdr-left {
   float: left;
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 #hdr-right {
@@ -1029,7 +1051,7 @@ dl.section dd {
 
 #projectname
 {
-  font: 300% Tahoma, Arial,sans-serif;
+  font: 300% Roboto, "Segoe UI", Arial, sans-serif;
   margin: 0px;
   padding: 2px 0px;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
@@ -1038,14 +1060,14 @@ dl.section dd {
 
 #projectbrief
 {
-  font: 120% Tahoma, Arial,sans-serif;
+  font: 120% Roboto, "Segoe UI", Arial, sans-serif;
   margin: 0px;
   padding: 0px;
 }
 
 #projectnumber
 {
-  font: 50% Tahoma, Arial,sans-serif;
+  font: 50% Roboto, "Segoe UI", Arial, sans-serif;
   margin: 0px;
   padding: 0px;
 }
@@ -1106,7 +1128,7 @@ dl.section dd {
 
 .caption
 {
-  font-weight: bold;
+  font-weight: 500;
 }
 
 div.zoom
@@ -1121,7 +1143,7 @@ dl.citelist {
 dl.citelist dt {
         color:#965812;
         float:left;
-        font-weight:bold;
+        font-weight:500;
         margin-right:10px;
         padding:5px;
 }
@@ -1144,14 +1166,14 @@ div.toc {
 
 div.toc li {
         background: url("bdwn.png") no-repeat scroll 0 5px transparent;
-        font: 10px/1.2 Verdana,DejaVu Sans,Geneva,sans-serif;
+        font: 10px/1.2 Roboto, "Segoe UI", Arial, sans-serif;
         margin-top: 5px;
         padding-left: 10px;
         padding-top: 2px;
 }
 
 div.toc h3 {
-        font: bold 12px/1.2 Arial,FreeSans,sans-serif;
+        font: 500 12px/1.2 Roboto, "Segoe UI", Arial, sans-serif;
   color: #D07A19;
         border-bottom: 0 none;
         margin: 0;
@@ -1180,7 +1202,7 @@ div.toc li.level4 {
 }
 
 .inherit_header {
-        font-weight: bold;
+        font-weight: 500;
         color: gray;
         cursor: pointer;
   -webkit-touch-callout: none;
@@ -1233,11 +1255,11 @@ tr.heading h2 {
 }
 
 #powerTip div.ttname a {
-        font-weight: bold;
+        font-weight: 500;
 }
 
 #powerTip div.ttname {
-        font-weight: bold;
+        font-weight: 500;
 }
 
 #powerTip div.ttdeci {
@@ -1247,7 +1269,7 @@ tr.heading h2 {
 #powerTip div {
         margin: 0px;
         padding: 0px;
-        font: 12px/16px Roboto,sans-serif;
+        font: 12px/16px Roboto, "Segoe UI", Arial, sans-serif;
 }
 
 #powerTip:before, #powerTip:after {

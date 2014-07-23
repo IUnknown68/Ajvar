@@ -1,9 +1,9 @@
 /**************************************************************************//**
- * @file
- * @brief     Declaration of `Ajvar::Dispatch::Ex::Properties` class.
- * @author    Arne Seib <arne@salsitasoft.com>
- * @copyright 2014 Salsita Software (http://www.salsitasoft.com).
- *****************************************************************************/
+@file
+@brief     Declaration of `Ajvar::Dispatch::Ex::Properties`.
+@author    Arne Seib <arne@salsitasoft.com>
+@copyright 2014 Salsita Software (http://www.salsitasoft.com).
+***************************************************************************/
 
 #pragma once
 
@@ -13,10 +13,10 @@ namespace Ex {
 
 //============================================================================
 /// @class  Properties
-/// @brief  Implements expando properties for IDispatchEx.
+/// @brief  Implements expando properties for `IDispatchEx`.
 /// @details This class is supposed to be used whenever you need a full-fledged
-/// `IDispatchEx` implementation. It does not implement the interface, but the
-/// logic required to serve the interface.
+/// `IDispatchEx` implementation. It does not implement the interface itself,
+/// but the logic required to serve the interface.
 class Properties
 {
 public: // types
@@ -39,10 +39,12 @@ public: // methods
   /// @}
 
 protected:  // methods
-  /// @brief Completely empties the object, removes all properties and resets mLastDISPID.
+  /// @brief Removes all properties and resets `mLastDISPID`.
   void reset();
 
   /// @brief Sets a value by id.
+  /// @details Sets a value for which a name/id pair has to exist already. To create
+  /// such a pair call `getDispID(...)` with `aCreate` set to `true`.
   /// @param[in] aId `DISPID` of the value to set.
   /// @param[in] aProperty `VARIANT *`, the actual value.
   HRESULT putValue(
@@ -63,7 +65,8 @@ protected:  // methods
     DISPID aId,
     BSTR * aRetVal);
 
-  /// @brief Gets an id for a name. If `aCreate` is true, the property will be created.
+  /// @brief Gets / creates an id for a name.
+  /// @details If `aCreate` is true, the property will be created, but no value will be set.
   /// @param[in] aName `LPCOLESTR` to get the `DISPID` for.
   /// @param[out] aRetVal `DISPID`, receives the id.
   /// @param[in] aCreate `bool` - create the property or not.
@@ -72,21 +75,38 @@ protected:  // methods
     DISPID * aRetVal,
     bool aCreate = false);
 
-  /// @brief Gets the next `DISPID` for a given id. Used for enumerating properties.
+  /// @brief Gets the next used (non-empty) `DISPID` for a given id for enumerating
+  /// properties.
+  /// @details `enumNextDispID()` enumerates the ids of all currently existing
+  /// values. This means, deleted or not-yet set values will be skipped, so you
+  /// can expect non-continuous ids for subsequent calls.
+  /// @code{.cpp}
+  /// DISPID did = DISPID_STARTENUM;
+  /// for (HRESULT hr = enumNextDispID(0, did, &did);
+  ///     S_OK == hr;
+  ///     hr = enumNextDispID(0, did, &did)) {
+  ///   // do something with did here
+  /// }
+  /// @endcode
   /// @param[in] grfdex `DWORD` - ignored.
   /// @param[in] did `DISPID`, current `DISPID` to start the enumeration.
   /// @param[out] aRetVal `DISPID` - receives the `DISPID` of the next value.
-  /// @return `S_FALSE` if there are no more ids, `S_OK` for success, any other value on error.
+  /// @return `S_FALSE` if there are no more ids, `S_OK` for success, any other
+  /// value on error.
   HRESULT enumNextDispID(
     DWORD grfdex, /* ignored */
     DISPID did,
     DISPID * aRetVal);
 
   /// @brief Removes a certain property by id.
+  /// @details Values will be removed, but the name / id will be kept.
+  /// `IDispatchEx` requires that the name/DISPID combination stays valid for the
+  /// whole lifetime of the object.
   /// @param[in] aId `DISPID` of the value to remove.
   HRESULT remove(DISPID aId);
 
   /// @brief Removes a certain property by name.
+  /// @see `remove(DISPID aId)`
   /// @param[in] aName `LPCOLESTR`, name of the value to remove.
   HRESULT remove(LPCOLESTR aName);
 

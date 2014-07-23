@@ -4,9 +4,12 @@
 @author    Arne Seib <arne@salsitasoft.com>
 @copyright 2014 Salsita Software (http://www.salsitasoft.com).
 ***************************************************************************/
+
 #pragma once
 
 namespace Ajvar {
+
+/// @brief Helper for `CRITICAL_SECTION`
 namespace Sync {
 
 /// @brief `CriticalSection` is just a wrapper around `CRITICAL_SECTION`.

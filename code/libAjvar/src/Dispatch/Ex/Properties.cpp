@@ -1,9 +1,9 @@
 /**************************************************************************//**
- * @file
- * @brief     Implementation of `Ajvar::Dispatch::Ex::Properties` class.
- * @author    Arne Seib <arne@salsitasoft.com>
- * @copyright 2014 Salsita Software (http://www.salsitasoft.com).
- *****************************************************************************/
+@file
+@brief     Implementation of `Ajvar::Dispatch::Ex::Properties`.
+@author    Arne Seib <arne@salsitasoft.com>
+@copyright 2014 Salsita Software (http://www.salsitasoft.com).
+***************************************************************************/
 
 #include "stdafx.h"
 #include <Dispatch/Ex/Properties.h>
@@ -37,8 +37,6 @@ void Properties::reset()
 
 //----------------------------------------------------------------------------
 // putValue
-/// @details Sets a value for which a name/id pair has to exist already. To create
-/// such a pair call `getDispID(...)` with `aCreate` set to `true`.
 HRESULT Properties::putValue(
   DISPID aId,
   const VARIANT & aProperty)
@@ -115,9 +113,6 @@ HRESULT Properties::getDispID(
 
 //----------------------------------------------------------------------------
 // enumNextDispID
-/// @details `enumNextDispID()` enumerates the ids of all currently stored
-/// values. This means, that values which were deleted will be skipped, so you
-/// can expect non-continuous ids for subsequent calls.
 HRESULT Properties::enumNextDispID(
   DWORD grfdex, /* ignored */
   DISPID did,
@@ -161,9 +156,6 @@ HRESULT Properties::enumNextDispID(
 
 //----------------------------------------------------------------------------
 // remove
-/// @details Values will be removed, but the name / id will be kept.
-/// IDispatchEx requires that the name/DISPID combination stays valid for the
-/// whole lifetime of the object.
 HRESULT Properties::remove(DISPID aId)
 {
   MapDispId2Variant::iterator it = mValues.find(aId);
@@ -177,7 +169,6 @@ HRESULT Properties::remove(DISPID aId)
 
 //----------------------------------------------------------------------------
 // remove
-/// @see `remove(DISPID aId)`
 HRESULT Properties::remove(LPCOLESTR aName)
 {
   MapName2DispId::iterator it = mNameIDs.find(aName);

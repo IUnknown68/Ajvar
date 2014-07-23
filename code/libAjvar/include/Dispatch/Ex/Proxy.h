@@ -1,6 +1,6 @@
 /**************************************************************************//**
 @file
-@brief     
+@brief     IDispatchEx-Proxy
 @author    Arne Seib <arne@salsitasoft.com>
 @copyright 2014 Salsita Software (http://www.salsitasoft.com).
 ***************************************************************************/
@@ -11,7 +11,7 @@ namespace Ajvar {
 namespace Dispatch {
 namespace Ex {
 
-// used by DispatchEx::Proxy
+/// @brief Forwards a call to `mTarget`.
 #define FORWARD_CALL(_name, ...) \
     { \
       return (mTarget) ? mTarget->_name(__VA_ARGS__) : E_UNEXPECTED;  \
