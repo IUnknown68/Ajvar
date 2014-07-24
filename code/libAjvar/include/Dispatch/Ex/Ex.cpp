@@ -1,6 +1,6 @@
 /**************************************************************************//**
  * @file
- * @brief     Main include file for `ATLX::Dispatch::Ex`
+ * @brief     Main include file for `Ajvar::Dispatch::Ex`
  * @author    Arne Seib <arne@salsitasoft.com>
  * @copyright 2014 Salsita Software (http://www.salsitasoft.com).
  *****************************************************************************/
@@ -9,7 +9,7 @@
 #include "stdafx.h"
 #include "Ex.h"
 
-namespace ATLX {
+namespace Ajvar {
 namespace Dispatch {
 namespace Ex {
 
@@ -42,5 +42,5 @@ HRESULT forEach(IDispatchEx * aDispEx, EachDispEx aEach, DWORD aEnumFlags)
 
 } // namespace Ex
 } // namespace Dispatch
-} // namespace ATLX
+} // namespace Ajvar
 
