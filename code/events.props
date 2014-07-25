@@ -3,15 +3,15 @@
   <ImportGroup Label="PropertySheets" />
   <ItemDefinitionGroup>
     <PreBuildEvent Condition="exists('$(ProjectDir)events\PreBuild.wsf')">
-      <Command>cscript "$(ProjectDir)events\PreBuild.wsf" /event:PostBuild /project:"$(ProjectName)" /platform:"$(PlatformName)" /configuration:"$(Configuration)" /solution:"$(SolutionName)" /settings:"$(SolutionDir)settings.user.props" /deployfolder:"$(DeployVersionFolder)" /outfolder:"$(OutDir)" /intfolder:"$(IntDir)"</Command>
+      <Command>cscript "$(ProjectDir)events\PreBuild.wsf" /event:PostBuild /project:"$(ProjectName)" /platform:"$(PlatformName)" /configuration:"$(Configuration)" /solution:"$(SolutionName)" /settings:"$(SolutionDir)settings.user.props" /deployfolder:"$(DeployVersionFolder)" /buildfolder:"$(BuildFolder)" /outfolder:"$(OutDir)" /intfolder:"$(IntDir)"</Command>
       <Message>Running PreBuild hook</Message>
     </PreBuildEvent>
     <PreLinkEvent Condition="exists('$(ProjectDir)events\PreLink.wsf')">
-      <Command>cscript "$(ProjectDir)events\PreLink.wsf" /event:PostBuild /project:"$(ProjectName)" /platform:"$(PlatformName)" /configuration:"$(Configuration)" /solution:"$(SolutionName)" /settings:"$(SolutionDir)settings.user.props" /deployfolder:"$(DeployVersionFolder)" /outfolder:"$(OutDir)" /intfolder:"$(IntDir)"</Command>
+      <Command>cscript "$(ProjectDir)events\PreLink.wsf" /event:PostBuild /project:"$(ProjectName)" /platform:"$(PlatformName)" /configuration:"$(Configuration)" /solution:"$(SolutionName)" /settings:"$(SolutionDir)settings.user.props" /deployfolder:"$(DeployVersionFolder)" /buildfolder:"$(BuildFolder)" /outfolder:"$(OutDir)" /intfolder:"$(IntDir)"</Command>
       <Message>Running PreLink hook</Message>
     </PreLinkEvent>
     <PostBuildEvent Condition="exists('$(ProjectDir)events\PostBuild.wsf')">
-      <Command>cscript "$(ProjectDir)events\PostBuild.wsf" /event:PostBuild /project:"$(ProjectName)" /platform:"$(PlatformName)" /configuration:"$(Configuration)" /solution:"$(SolutionName)" /settings:"$(SolutionDir)settings.user.props" /deployfolder:"$(DeployVersionFolder)" /outfolder:"$(OutDir)" /intfolder:"$(IntDir)"</Command>
+      <Command>cscript "$(ProjectDir)events\PostBuild.wsf" /event:PostBuild /project:"$(ProjectName)" /platform:"$(PlatformName)" /configuration:"$(Configuration)" /solution:"$(SolutionName)" /settings:"$(SolutionDir)settings.user.props" /deployfolder:"$(DeployVersionFolder)" /buildfolder:"$(BuildFolder)" /outfolder:"$(OutDir)" /intfolder:"$(IntDir)"</Command>
       <Message>Running PostBuild hook</Message>
     </PostBuildEvent>
   </ItemDefinitionGroup>

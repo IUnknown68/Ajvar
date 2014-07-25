@@ -40,6 +40,10 @@ if exist "$(SolutionDir)scripts\$(ProjectName)-PreBuild.wsf" (cscript "$(Solutio
       get: getArgs.folder,
       create: true
     },
+    'buildfolder': {
+      name: 'Build Folder',
+      get: getArgs.folder
+    },
     'outfolder': {
       name: 'Out Folder',
       get: getArgs.folder

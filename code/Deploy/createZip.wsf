@@ -4,7 +4,7 @@
 <script language="JScript">
 
 // create zip
-
+/*
 var args = getArgs({
   'deployfolder': {
     name: 'Deploy folder',
@@ -20,6 +20,6 @@ WScript.Echo('# NOTE:');
 WScript.Echo('# No files are copied to the resulting zip yet, because the shell does not work reliably.');
 WScript.Echo('#');
 WScript.Echo('###########################################################################\n');
-
+*/
 </script>
 </job>
