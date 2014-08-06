@@ -44,6 +44,15 @@ public:
     TConnector::Get(mObject, aName, *this, &mDispId);
   }
 
+  /// @brief Error-constructor to create an errornous object
+  /// @param[in]  Error code
+  RefVariant(HRESULT aError) :
+    mObject(nullptr), mDispId(0)
+  {
+    scode = aError;
+    vt = VT_ERROR;
+  }
+
   /// @brief Assignment operators.
   /// @details  Does assignment via `TBase`, then calls
   /// `Set()` to set this property on the underlying object.
@@ -131,6 +140,19 @@ public:
     return retval;
   }
 #undef CALL_ARGUMENT_COUNT
+
+  /// @brief Array access operator taking a property name.
+  /// @details  Takes a property name and returns an `_LVariant`
+  /// for that property.
+  /// @param[in]  aName Name of the property.
+  /// @return  `_LVariant` that can be used as lvalue in assingment.
+  RefVariant<TConnector, TBase> operator [] (LPCWSTR aName)
+  {
+    if (VT_DISPATCH == vt) {
+      return RefVariant<TConnector, TBase>(static_cast<TIf*>(pdispVal), aName);
+    }
+    return RefVariant<TConnector, TBase>(DISP_E_TYPEMISMATCH);
+  }
 
   /// @brief Low-level call method.
   /// @param [out] aRetVal Return value of the call, or an error.

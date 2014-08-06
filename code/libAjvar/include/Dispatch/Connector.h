@@ -46,6 +46,7 @@ public:
   {
     // NOTE: We empty the return value here in any case!
     VariantClear(&aRetVal);
+    // Can use `GetProperty` here because `CComPtr<IDispatch>` is specialized.
     return ATL::CComPtr<_Interface>::GetProperty(aObject, aDispId, &aRetVal);
   }
 
@@ -77,6 +78,7 @@ public:
   /// @param aValue The new value.
   static HRESULT Set(_Interface * aObject, DISPID aDispId, VARIANT & aValue)
   {
+    // Can use `PutProperty` here because `CComPtr<IDispatch>` is specialized.
     return ATL::CComPtr<_Interface>::PutProperty(aObject, aDispId, &aValue);
   }
 
