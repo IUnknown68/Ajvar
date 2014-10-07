@@ -7,9 +7,9 @@ control (`IWebBrowser`).
 
 Requirements
 ============
-- Visual Studio 2012 or higher (untested)
-- [gtest](http://code.google.com/p/googletest/) and [gmock](http://code.google.com/p/googlemock/)
-- for building the documentation: [doxygen](http://www.stack.nl/~dimitri/doxygen/)
+- Visual Studio 2012 or higher (untested, 2012 used for development).
+- [Gtest](http://code.google.com/p/googletest/) and [gmock](http://code.google.com/p/googlemock/).
+- For building the documentation: [doxygen](http://www.stack.nl/~dimitri/doxygen/) 1.8.6 or higher.
 
 Installation
 ============
@@ -19,25 +19,25 @@ Installation
 - Open the "Property Manager" in VS and find the file `code\settings.user`
   (the file you just copied).
 - Adjust the paths in the section "User Macros" according to your project layout.  
-  Generally we use foldernames for build folders (and by this for libs) following this format:  
-  `$(Configuration)_$(PlatformName)`
-  So e.g. for the 32bit debug version, output will be generated in
-  `Debug_Win32`, and libraries are expected in a subfolder named equally.  
-  The `$(FullConfiguration)` macro can be used to refer to this combination.
+
+Generally we use foldernames for build folders (and by this for libs) following this format:  
+
+`$(Configuration)_$(PlatformName)`
+
+So e.g. for the 32bit debug version, output will be generated in
+`Debug_Win32`, and libraries are expected in a some folder named equally.  
+The `$(FullConfiguration)` macro can be used to refer to this combination.
 
 Building
 ========
 ##### Libraries / tests
-Do a "Batch build" in VS and check
-- libAjvar
-- libAjvarTests
-
-for in each configuration you need.
+Do a "Batch build" in VS and check `libAjvarTests` for in each configuration you
+need. The dependencies will also build `libAjvar`.
 
 ##### Documentation
-- Build the "Documentation" project. Dependencies make sure also libAjvar and
-  libAjvarTests will also get built in your current configuration.
-  You need [doxygen](http://www.stack.nl/~dimitri/doxygen/) for this.
+Build the "Documentation" project. It depends on `libAjvarTests`, so
+`libAjvar` and `libAjvarTests` will be built in the selected configuration.
+You need [doxygen](http://www.stack.nl/~dimitri/doxygen/) for this.
 
 ##### Deploy
 You can build all "Deploy" targets as a batch. This will generate
@@ -45,6 +45,8 @@ You can build all "Deploy" targets as a batch. This will generate
 
 ```
 deploy/Ajvar-<VERSION>
+  README.md     This file
+  Ajvar.html    Documentation
   docs/         Documentation files
   include/      Include files
     Browser/
@@ -60,11 +62,9 @@ deploy/Ajvar-<VERSION>
     Release_Win32/
     Debug_x64/
     Release_x64/
-  Ajvar.html    Documentation
-  README.md     This file
 ```
 
-All builds of libAjvarTests will also run the tests.
+All builds of `libAjvarTests` will also run the tests.
 
 Buildsystem
 -----------
