@@ -79,6 +79,8 @@ control (`IWebBrowser`).
 ***************************************************************************/
 #pragma once
 
+#include "Error/ErrorStrings.h"
+
 /// @brief `NO_COPY` macro: Declares a private copy constructor and assignment
 /// operator.
 #ifndef NO_COPY
@@ -106,7 +108,7 @@ control (`IWebBrowser`).
     HRESULT _hr__ = _hr; \
     if (FAILED(_hr__)) \
     { \
-      ATLTRACE(_T("ASSERTION FAILED: 0x%08x (%s) in "), _hr__, DErrHRESULT(_hr__)); \
+      ATLTRACE(_T("ASSERTION FAILED: 0x%08x (%s) in "), _hr__, Ajvar::Error::DErrHRESULT(_hr__)); \
       ATLTRACE(__FILE__); \
       ATLTRACE(_T(" line %i\n"), __LINE__); \
       AJ_ASSERT_(false); \
@@ -121,7 +123,7 @@ control (`IWebBrowser`).
     HRESULT _hr__ = _hr; \
     if (FAILED(_hr__)) \
     { \
-      ATLTRACE(_T("ASSERTION FAILED: 0x%08x (%s) in "), _hr__, DErrHRESULT(_hr__)); \
+      ATLTRACE(_T("ASSERTION FAILED: 0x%08x (%s) in "), _hr__, Ajvar::Error::DErrHRESULT(_hr__)); \
       ATLTRACE(__FILE__); \
       ATLTRACE(_T(" line %i\n"), __LINE__); \
       AJ_ASSERT_(false); \
@@ -134,7 +136,7 @@ control (`IWebBrowser`).
     _hrRet = _hr; \
     if (FAILED(_hrRet)) \
     { \
-      ATLTRACE(_T("ASSERTION FAILED: 0x%08x (%s) in "), _hrRet, DErrHRESULT(_hrRet)); \
+      ATLTRACE(_T("ASSERTION FAILED: 0x%08x (%s) in "), _hrRet, Ajvar::Error::DErrHRESULT(_hrRet)); \
       ATLTRACE(__FILE__); \
       ATLTRACE(_T(" line %i\n"), __LINE__); \
       AJ_ASSERT_(false); \
