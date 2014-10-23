@@ -61,6 +61,9 @@
     <ClInclude Include="include\Dispatch\_Object.h">
       <Filter>Dispatch</Filter>
     </ClInclude>
+    <ClInclude Include="include\Browser\MSIEWindows.h">
+      <Filter>Browser</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Dispatch\Ex\Ex.cpp">

@@ -7,6 +7,10 @@
 
 #pragma once
 
+#include <string>
+#include <unordered_map>
+#include <map>
+
 namespace Ajvar {
 namespace Dispatch {
 namespace Ex {

@@ -143,6 +143,7 @@
     <ClInclude Include="..\targetspecs\targetver.h" />
     <ClInclude Include="include\Ajvar.h" />
     <ClInclude Include="include\Browser\DocumentSink.h" />
+    <ClInclude Include="include\Browser\MSIEWindows.h" />
     <ClInclude Include="include\Debug\ComObjectDebugging.h" />
     <ClInclude Include="include\_Version.h" />
     <ClInclude Include="include\Dispatch\Connector.h" />

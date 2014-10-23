@@ -7,6 +7,8 @@
 
 #pragma once
 
+#include <functional>
+
 #include "Properties.h"
 #include "Connector.h"
 
