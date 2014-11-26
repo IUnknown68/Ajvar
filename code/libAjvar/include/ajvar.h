@@ -192,6 +192,7 @@ typedef ATL::CComBSTR ComBSTR;
 #  endif // def AJ_NO_DISPATCH
 #  include "Dispatch/Ex/Ex.h"
 #  include "Dispatch/Ex/Proxy.h"
+#  include "Dispatch/Ex/ObjectImpl.h"
 #endif // ndef AJ_NO_DISPATCHEX
 
 #ifndef AJ_NO_GLOBALINTERFACETABLE

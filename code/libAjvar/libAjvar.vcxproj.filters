@@ -64,6 +64,9 @@
     <ClInclude Include="include\Browser\MSIEWindows.h">
       <Filter>Browser</Filter>
     </ClInclude>
+    <ClInclude Include="include\Dispatch\Ex\ObjectImpl.h">
+      <Filter>Dispatch\Ex</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Dispatch\Ex\Ex.cpp">
@@ -80,6 +83,9 @@
     </ClCompile>
     <ClCompile Include="src\_Version.cpp">
       <Filter>Ajvar</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Dispatch\Ex\ObjectImpl.cpp">
+      <Filter>Dispatch\Ex</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -113,5 +119,10 @@
     <Filter Include="Ajvar">
       <UniqueIdentifier>{52507778-e828-4b18-8f34-129584329cdc}</UniqueIdentifier>
     </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Midl Include="src\Ajvar.idl">
+      <Filter>Ajvar</Filter>
+    </Midl>
   </ItemGroup>
 </Project>

@@ -1,6 +1,5 @@
-#include <stdafx.h>
 #define _DEBUG_COM_OBJECTS
-#include <include/ajvar.h>
+#include "stdafx_tests.h"
 #include "AtlModule.h"
 
 //============================================================================

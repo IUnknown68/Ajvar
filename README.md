@@ -18,15 +18,34 @@ Installation
 - Open the project in VS.
 - Open the "Property Manager" in VS and find the file `code\settings.user`
   (the file you just copied).
-- Adjust the paths in the section "User Macros" according to your project layout.  
+- Adjust the paths in the section "User Macros" according to your project layout.
 
-Generally we use foldernames for build folders (and by this for libs) following this format:  
+Generally we use foldernames for build folders (and by this for libs) following this format:
 
 `$(Configuration)_$(PlatformName)`
 
 So e.g. for the 32bit debug version, output will be generated in
-`Debug_Win32`, and libraries are expected in a some folder named equally.  
+`Debug_Win32`, and libraries are expected in a some folder named equally.
 The `$(FullConfiguration)` macro can be used to refer to this combination.
+
+The Ajvar solution file contains the following projects:
+
+1) libAjvar
+   The actual ajvar libraries.
+
+2) libAjvarTests
+   Gtest-based unit tests. Builds and runs them.
+   Requires: gtest, gmock (see below).
+
+3) Documentation
+   Yes, that's right - the documentation. Uses doxygen to build the html based documentation.
+   Requires doxygen.
+
+4) Deploy
+   A helper project to put everything together: libraries, documentation, all neatly placed in a folder named 'Ajvar-<version>', ready to zip.
+   Note: I didn't include code to actually create the zip, because I couldn't find a good way to do this with windows' built-in functions and I don't want to require any additional external tools.
+   There is some code though to create the zip via the windows shell, but it turned out, there is no way to detect when zipping finished - and when you quit the calling process too early, your zip will be incomplete.
+   I guess it is acceptable, if you want a zip, to manually rightclick the folder and select "Add to zip" from the context menu.
 
 Building
 ========

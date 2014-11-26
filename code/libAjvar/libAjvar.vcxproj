@@ -94,6 +94,12 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <Midl>
+      <HeaderFileName>include\%(Filename)_i.h</HeaderFileName>
+    </Midl>
+    <Midl>
+      <InterfaceIdentifierFileName>include\%(Filename)_i.c</InterfaceIdentifierFileName>
+    </Midl>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -106,6 +112,12 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <Midl>
+      <HeaderFileName>include\%(Filename)_i.h</HeaderFileName>
+    </Midl>
+    <Midl>
+      <InterfaceIdentifierFileName>include\%(Filename)_i.c</InterfaceIdentifierFileName>
+    </Midl>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -122,6 +134,12 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
+    <Midl>
+      <HeaderFileName>include\%(Filename)_i.h</HeaderFileName>
+    </Midl>
+    <Midl>
+      <InterfaceIdentifierFileName>include\%(Filename)_i.c</InterfaceIdentifierFileName>
+    </Midl>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -138,6 +156,12 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
+    <Midl>
+      <HeaderFileName>include\%(Filename)_i.h</HeaderFileName>
+    </Midl>
+    <Midl>
+      <InterfaceIdentifierFileName>include\%(Filename)_i.c</InterfaceIdentifierFileName>
+    </Midl>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\targetspecs\targetver.h" />
@@ -145,6 +169,7 @@
     <ClInclude Include="include\Browser\DocumentSink.h" />
     <ClInclude Include="include\Browser\MSIEWindows.h" />
     <ClInclude Include="include\Debug\ComObjectDebugging.h" />
+    <ClInclude Include="include\Dispatch\Ex\ObjectImpl.h" />
     <ClInclude Include="include\_Version.h" />
     <ClInclude Include="include\Dispatch\Connector.h" />
     <ClInclude Include="include\Dispatch\Dispatch.h" />
@@ -164,6 +189,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Dispatch\Ex\Ex.cpp" />
+    <ClCompile Include="src\Dispatch\Ex\ObjectImpl.cpp" />
     <ClCompile Include="src\Dispatch\Ex\Properties.cpp" />
     <ClCompile Include="src\Error\ErrorStrings.cpp" />
     <ClCompile Include="src\_Version.cpp" />
@@ -173,6 +199,9 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Midl Include="src\Ajvar.idl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

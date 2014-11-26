@@ -1,5 +1,4 @@
-#include <stdafx.h>
-#include <include/ajvar.h>
+#include "stdafx_tests.h"
 
 //============================================================================
 // TESTS

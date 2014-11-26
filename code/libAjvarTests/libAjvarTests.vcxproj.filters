@@ -22,8 +22,10 @@
     <ClCompile Include="src\GlobalInterfaceTest.cpp">
       <Filter>tests</Filter>
     </ClCompile>
+    <ClCompile Include="src\stdafx_tests.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\AtlModule.h" />
+    <ClInclude Include="src\stdafx_tests.h" />
   </ItemGroup>
 </Project>

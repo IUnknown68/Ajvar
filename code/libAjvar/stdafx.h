@@ -31,7 +31,3 @@
 #include <algorithm>
 #include <functional>
 
-// gtest
-#include "gtest/gtest.h"
-#include "gmock/gmock.h"
-

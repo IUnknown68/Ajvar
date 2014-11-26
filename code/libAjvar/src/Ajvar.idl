@@ -1,0 +1,31 @@
+// PicDBHelper.idl : IDL source for PicDBHelper
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (PicDBHelper.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	uuid(5ACFE42D-CC7C-473E-A935-B10914A485EC),
+	version(1.0),
+]
+library AjvarLib
+{
+	importlib("stdole2.tlb");
+
+  //*************************************************************
+  [
+	  object,
+	  uuid(EFF94E93-583D-4FBC-8816-32D67E041175),
+	  helpstring("IJSObject Interface"),
+	  pointer_default(unique)
+  ]
+  interface IJSObject : IUnknown
+  {
+  };
+  //*************************************************************
+
+};
+

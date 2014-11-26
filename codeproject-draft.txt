@@ -1,0 +1,51 @@
+﻿Ajvar was designed with two major goals in mind:
+
+- Convenience
+- Robustness
+
+Convenience
+-----------
+
+Convenience here means: Easy access to the properties of an `IDispatch(Ex)`. In JScript you can access properties like this:
+
+```
+var foo = someObject["foo"];
+```
+
+With Ajvar you do the same:
+
+```
+auto foo = someObject[L"foo"];
+```
+
+What you get in return is a `_RefVariant`. This is basically a normal `CComVariant`, just that it keeps a reference to the `IDispatch(Ex)` it belongs to.
+
+This allows you to use a `_RefVariant` as an l-value:
+
+```
+foo = L"bar";
+foo = 1234;
+// JsObject otherObject(...);
+foo = otherObject;
+```
+
+with the full type conversion power of a `CComVariant`. The assingment operator passes the new value to the owning `IDispatch(Ex)` and updates the value there as well.
+
+Of course, you can also easily set properts, and create new properties:
+
+```
+someObject[L"bar"] = L"pie";
+```
+
+Calling methods:
+
+`_RefVariant` has another goodie: When the property is of type `VT_DISPATCH`, it can be called as a function:
+
+```
+someObject[L"alert"]("hello world");
+```
+
+
+Robustness
+----------
+
