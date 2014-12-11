@@ -1,0 +1,25 @@
+﻿<job>
+<script language="JScript" src="../scripts/fso.js"/>
+<script language="JScript" src="../scripts/getArgs.js"/>
+<script language="JScript">
+
+// create zip
+/*
+var args = getArgs({
+  'deployfolder': {
+    name: 'Deploy folder',
+    get: getArgs.folder
+  }
+});
+
+WScript.Echo('###########################################################################');
+WScript.Echo('# Creating zip \n# ' + args.deployfolder.Path + '.zip');
+fs.createZip(args.deployfolder.Path + '.zip', args.deployfolder.Path);
+WScript.Echo('#');
+WScript.Echo('# NOTE:');
+WScript.Echo('# No files are copied to the resulting zip yet, because the shell does not work reliably.');
+WScript.Echo('#');
+WScript.Echo('###########################################################################\n');
+*/
+</script>
+</job>

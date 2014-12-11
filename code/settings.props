@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros">
+    <Version_Major>0</Version_Major>
+    <Version_Minor>1</Version_Minor>
+    <Version_Patch>0</Version_Patch>
+    <Version_Pre>alpha</Version_Pre>
+    <Version_Meta />
+    <VersionString>0.1.0-alpha</VersionString>
+    <FullConfiguration>$(Configuration)_$(PlatformName)</FullConfiguration>
+    <WTL_Includes>C:\Program Files\WTL\Include</WTL_Includes>
+    <GTest_Includes>$(VisualStudioDir)\Projects\gtest\include</GTest_Includes>
+    <GTest_Lib>$(VisualStudioDir)\Projects\gtest\lib\$(FullConfiguration)</GTest_Lib>
+    <GMock_Includes>$(VisualStudioDir)\Projects\gtest\include</GMock_Includes>
+    <GMock_Lib>$(GTest_Lib)</GMock_Lib>
+    <Doxygen>C:\Program Files\doxygen\bin\doxygen.exe</Doxygen>
+    <DeployFolder>$(SolutionDir)..\deploy\</DeployFolder>
+    <DeployVersionFolder>$(DeployFolder)$(SolutionName)-$(VersionString)</DeployVersionFolder>
+    <BuildFolder>$(SolutionDir)..\build\</BuildFolder>
+    <GeneratedFilesFolder>$(BuildFolder)src\$(ProjectName)\</GeneratedFilesFolder>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OutDir>$(BuildFolder)$(FullConfiguration)\</OutDir>
+    <IntDir>$(BuildFolder)$(FullConfiguration)\$(ProjectName)\</IntDir>
+    <IncludePath>$(WTL_Includes);$(GTest_Includes);$(GMock_Includes);$(SolutionDir)targetspecs;$(IncludePath)</IncludePath>
+    <LibraryPath>$(GTest_Lib);$(GMock_Lib);$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <Link>
+      <AdditionalLibraryDirectories>$(GTest_Lib);$(GMock_Lib)</AdditionalLibraryDirectories>
+    </Link>
+    <ClCompile>
+      <PreprocessorDefinitions>_VARIADIC_MAX=10;AJ_VER_MAJ=$(Version_Major);AJ_VER_MIN=$(Version_Minor);AJ_VER_PAT=$(Version_Patch);AJ_VER_PRE="$(Version_Pre)";AJ_VER_MET="$(Version_Meta)";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Midl>
+      <HeaderFileName>$(GeneratedFilesFolder)\%(Filename)_i.h</HeaderFileName>
+      <DllDataFileName>$(GeneratedFilesFolder)\dlldata.c</DllDataFileName>
+      <InterfaceIdentifierFileName>$(GeneratedFilesFolder)\%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>$(GeneratedFilesFolder)\%(Filename)_p.c</ProxyFileName>
+      <TypeLibraryName>$(OutDir)$(ProjectName).tlb</TypeLibraryName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <AdditionalIncludeDirectories>$(ProjectDir)include;$(ProjectDir)src;$(GeneratedFilesFolder);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <AdditionalIncludeDirectories>$(ProjectDir)include;$(ProjectDir)src;$(GeneratedFilesFolder);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <AdditionalIncludeDirectories>$(ProjectDir)include;$(ProjectDir)src;$(GeneratedFilesFolder);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <AdditionalIncludeDirectories>$(ProjectDir)include;$(ProjectDir)src;$(GeneratedFilesFolder);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <BuildMacro Include="Version_Major">
+      <Value>$(Version_Major)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Version_Minor">
+      <Value>$(Version_Minor)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Version_Patch">
+      <Value>$(Version_Patch)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Version_Pre">
+      <Value>$(Version_Pre)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Version_Meta">
+      <Value>$(Version_Meta)</Value>
+    </BuildMacro>
+    <BuildMacro Include="VersionString">
+      <Value>$(VersionString)</Value>
+    </BuildMacro>
+    <BuildMacro Include="FullConfiguration">
+      <Value>$(FullConfiguration)</Value>
+    </BuildMacro>
+    <BuildMacro Include="WTL_Includes">
+      <Value>$(WTL_Includes)</Value>
+    </BuildMacro>
+    <BuildMacro Include="GTest_Includes">
+      <Value>$(GTest_Includes)</Value>
+    </BuildMacro>
+    <BuildMacro Include="GTest_Lib">
+      <Value>$(GTest_Lib)</Value>
+    </BuildMacro>
+    <BuildMacro Include="GMock_Includes">
+      <Value>$(GMock_Includes)</Value>
+    </BuildMacro>
+    <BuildMacro Include="GMock_Lib">
+      <Value>$(GMock_Lib)</Value>
+    </BuildMacro>
+    <BuildMacro Include="Doxygen">
+      <Value>$(Doxygen)</Value>
+    </BuildMacro>
+    <BuildMacro Include="DeployFolder">
+      <Value>$(DeployFolder)</Value>
+    </BuildMacro>
+    <BuildMacro Include="DeployVersionFolder">
+      <Value>$(DeployVersionFolder)</Value>
+    </BuildMacro>
+    <BuildMacro Include="BuildFolder">
+      <Value>$(BuildFolder)</Value>
+    </BuildMacro>
+    <BuildMacro Include="GeneratedFilesFolder">
+      <Value>$(GeneratedFilesFolder)</Value>
+    </BuildMacro>
+  </ItemGroup>
+</Project>

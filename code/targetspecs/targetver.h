@@ -9,8 +9,8 @@
 #include <WinSDKVer.h>
 
 // minimum requirements:
-// _WIN32_WINNT_VISTA - Vista
-// _WIN32_IE_IE90 - IE9
+// _WIN32_WINNT_VISTA (0x0600) - Vista
+// _WIN32_IE_IE90 (0x0900) - IE9
 
 #ifndef _WIN32_WINNT
 # define _WIN32_WINNT  0x0600

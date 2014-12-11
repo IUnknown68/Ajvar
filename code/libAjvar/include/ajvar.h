@@ -1,139 +1,199 @@
-// stdafx.h : include file for standard system include files,
-// or project specific include files that are used frequently, but
-// are changed infrequently
-//
+/**************************************************************************//**
+@file
+@brief     Main include file for using Ajvar
+@author    Arne Seib <arne@salsitasoft.com>
+@copyright 2014 Salsita Software (http://www.salsitasoft.com).
+@mainpage  Ajvar DCOM helper library
+@tableofcontents
 
+@section About About
+Ajvar is a library containing helpers for dealing with ActiveScript-related
+things. It is focused on `IDispatch`, `IDispatchEx` and the webbrowser
+control (`IWebBrowser`).
+
+@section Types Types
+- `Ajvar::ComVariant`
+- `Ajvar::ComBSTR`
+- `Ajvar::Time::Win32::Time`
+- `Ajvar::Time::Unix::Time`
+- `Ajvar::Time::JScript::Time`
+
+@section Constants Constants
+- `Ajvar::Time::Minute`
+- `Ajvar::Time::Hour`
+- `Ajvar::Time::Day`
+- `Ajvar::Time::Week`
+- `Ajvar::Time::ShortMonth`
+- `Ajvar::Time::LongMonth`
+- `Ajvar::Time::Year`
+
+@section Functions Functions
+- `Ajvar::Time::Win32::from(Unix::Time)`
+- `Ajvar::Time::Win32::from(JScript::Time)`
+- `Ajvar::Time::Win32::now()`
+
+- `Ajvar::Time::Win32::from(Win32::Time)`
+- `Ajvar::Time::Win32::from(JScript::Time)`
+- `Ajvar::Time::Win32::now()`
+
+- `Ajvar::Time::Win32::from(Unix::Time)`
+- `Ajvar::Time::Win32::from(Win32::Time)`
+- `Ajvar::Time::Win32::now()`
+
+- `Ajvar::Dispatch::GetScriptDispatch(IWebBrowser2 *, TInterface **)`
+- `Ajvar::Dispatch::Ex::EachDispEx(HRESULT, const BSTR &, const DISPID, const VARIANT  &)`
+- `Ajvar::Dispatch::Ex::forEach(IDispatchEx *, EachDispEx, DWORD)`
+
+- `Ajvar::Error::DErrFACILITY()`
+- `Ajvar::Error::DErrWin32()`
+- `Ajvar::Error::DErrSEVERITY()`
+- `Ajvar::Error::DErrHRESULT()`
+
+@section Classes Classes
+- `Ajvar::Time::Timespan`
+
+- `Ajvar::Dispatch::Object`
+- `Ajvar::Dispatch::RefVariant`
+- `Ajvar::Dispatch::Ex::ObjectGet`
+- `Ajvar::Dispatch::Ex::ObjectCreate`
+- `Ajvar::Dispatch::Ex::Object`
+- `Ajvar::Dispatch::Ex::Properties`
+
+- `Ajvar::Sync::CriticalSection`
+- `Ajvar::Sync::Lock`
+
+- `Ajvar::Debug::AjvarComObjectRootEx`
+
+@section Templates Templates
+- `Ajvar::Dispatch::_Connector`
+
+@section Macros Macros
+- `NO_COPY()`
+- `AJ_ASSERT_()`
+- `IF_FAILED_RET_HR()`
+- `IF_FAILED_RET_ANY()`
+- `IF_FAILED_BREAK()`
+- `IF_NULL_RET()`
+- `IS_VTERR()`
+
+***************************************************************************/
 #pragma once
-int DoIt() ;
 
-namespace Ancho {
-namespace Time {
-/**
- * Ancho::Time
- * Contains timestamphandling and conversion between
- * Win32 FILETIME based values, unix timestamp and
- * JScript timestamp.
- *
- * NOTE: It is illegal to cast a FILETIME to a time_64, this might produce
- * alignment errors on Win64. That's why the original method was adapted to
- * accept directly a FILETIME structure rather than some int64.
- * See http://msdn.microsoft.com/en-us/library/ms724284%28v=vs.85%29.aspx
- *
- * Ancho::Time contains the following namespace / type relations:
- *  Win32     : A 64bit uinteger based on the Win32-epoch in 100-nanoseconds
- *  Unix      : A 32bit integer, unix time stamp
- *  JScript   : A double value, JavaScript, as returned from Date.getTime()
- *
- * Each namespace includes:
- * - typedef Time   : See above
- * - Time now()     : Returns now
- * - Time from(...) : methods for conversions
- *
- * Usage:
- *   Win32::Time t = Win32::now();
- *   JScript::Time tJs = JScript::from(t);
- **/
+#include "Error/ErrorStrings.h"
 
-// generic types
-// 64bit timestamp
-typedef ULONGLONG time_64;
+/// @brief `NO_COPY` macro: Declares a private copy constructor and assignment
+/// operator.
+#ifndef NO_COPY
+#define NO_COPY(_cls) \
+  private: \
+    _cls(const _cls &); \
+    _cls & operator = (const _cls &);
+#endif // ndef NO_COPY
 
-// 32bit timestamp
-typedef time_t time_32;
+/// @brief If `AJ_DEBUG_BREAK` is defined, the following error handling macros produce a
+/// debug break.
+#define AJ_DEBUG_BREAK
 
-// double timestamp
-typedef double time_d;
+/// @brief `ASSERT` macro, asserts only when `AJ_DEBUG_BREAK` is defined.
+#ifdef AJ_DEBUG_BREAK
+# define AJ_ASSERT_ ATLASSERT
+#else
+# define AJ_ASSERT_
+#endif
 
-// constants
-// Difference between Win32-epoch and unix-epoch in 100-nanoseconds
-static const time_64 EPOCH_DIFF = 116444736000000000LL;
+/// @brief Checks a `HRESULT` and returns if failed.
+#define IF_FAILED_RET_HR(_hr) \
+  do \
+  { \
+    HRESULT _hr__ = _hr; \
+    if (FAILED(_hr__)) \
+    { \
+      ATLTRACE(_T("ASSERTION FAILED: 0x%08x (%s) in "), _hr__, Ajvar::Error::DErrHRESULT(_hr__)); \
+      ATLTRACE(__FILE__); \
+      ATLTRACE(_T(" line %i\n"), __LINE__); \
+      AJ_ASSERT_(false); \
+      return _hr__; \
+    } \
+  } while(0);
 
-// Factor seconds to milliseconds
-static const ULONG RATE_DIFF_S_JS = 1000;
+/// @brief Checks a `HRESULT` and returns any value if failed.
+#define IF_FAILED_RET_ANY(_hr, _ret) \
+  do \
+  { \
+    HRESULT _hr__ = _hr; \
+    if (FAILED(_hr__)) \
+    { \
+      ATLTRACE(_T("ASSERTION FAILED: 0x%08x (%s) in "), _hr__, Ajvar::Error::DErrHRESULT(_hr__)); \
+      ATLTRACE(__FILE__); \
+      ATLTRACE(_T(" line %i\n"), __LINE__); \
+      AJ_ASSERT_(false); \
+      return _ret; \
+    } \
+  } while(0);
 
-// Factor seconds to 100 nsecs
-static const ULONG RATE_DIFF_UNIX = 10000000;
+/// @brief Checks a `HRESULT` and breaks a loop if failed. `_hrRet` receives the error code.
+#define IF_FAILED_BREAK(_hr, _hrRet) \
+    _hrRet = _hr; \
+    if (FAILED(_hrRet)) \
+    { \
+      ATLTRACE(_T("ASSERTION FAILED: 0x%08x (%s) in "), _hrRet, Ajvar::Error::DErrHRESULT(_hrRet)); \
+      ATLTRACE(__FILE__); \
+      ATLTRACE(_T(" line %i\n"), __LINE__); \
+      AJ_ASSERT_(false); \
+      break; \
+    }
 
-// Factor milliseconds to 100 nsecs
-static const ULONG RATE_DIFF_JS = 10000;
+/// @brief Checks a pointer value and returns `E_POINTER` if the value is `nullptr`.
+#define IF_NULL_RET(_val) \
+  if (nullptr == _val) { return E_POINTER; }
 
-// FILETIME2time_64
-// Converts a FILETIME to a time_64
-inline time_64 FILETIME2time_64(const FILETIME & aFileTime) {
-  return (((time_64)aFileTime.dwLowDateTime) | (((time_64)aFileTime.dwHighDateTime) << 32));
-}
+/// @brief Checks a `VARIANT` for being of type `VT_ERROR`.
+#define IS_VTERR(_val) \
+  (VT_ERROR == _val.vt)
 
-// Specialized types
-namespace Win32 {
-  typedef time_64 Time;
-}
 
-namespace Unix {
-  typedef time_32 Time;
-}
+//============================================================================
+/// @brief Main namespace: ATL Extensions
+/// @details  ATL Extensions inlcude a bunch of helpful stuff for dealing
+/// with `IDispatch` and `IDispatchEx`. It uses ATL classes as baseclasses.
+namespace Ajvar {
 
-namespace JScript {
-  typedef time_d Time;
-}
+/// @brief Internally used smartVariant
+typedef ATL::CComVariant ComVariant;
 
-// Types: Implementations
+/// @brief Internally used smartBSTR
+typedef ATL::CComBSTR ComBSTR;
 
-// Win32 timestamps
-namespace Win32 {
-  inline Time from(const Unix::Time & aOther)
-  {
-    return (Time)aOther * RATE_DIFF_UNIX + EPOCH_DIFF;
-  }
+} // namespace Ajvar
 
-  inline Time from(const JScript::Time & aOther)
-  {
-    return (Time)aOther * RATE_DIFF_JS + EPOCH_DIFF;
-  }
+#include "_Version.h"
 
-  inline Time now()
-  {
-    FILETIME ft = {0};
-    GetSystemTimeAsFileTime(&ft);
-    return FILETIME2time_64(ft);
-  }
-}
+#ifndef AJ_NO_COMOBJECTDEBUGGING
+#  include "Debug/ComObjectDebugging.h"
+#endif // ndef AJ_NO_COMOBJECTDEBUGGING
 
-// Unix timestamps
-namespace Unix {
-  inline Time from(const Win32::Time & aOther)
-  {
-    return (Time)(aOther - EPOCH_DIFF) / RATE_DIFF_UNIX;
-  }
+#ifndef AJ_NO_TIME
+#  include "Time/Time.h"
+#endif // ndef AJ_NO_TIME
 
-  inline Time from(const JScript::Time & aOther)
-  {
-    return (Time)(aOther / RATE_DIFF_S_JS);
-  }
+#ifndef AJ_NO_SYNC
+#  include "Sync/CriticalSection.h"
+#  include "Sync/Lock.h"
+#endif // ndef AJ_NO_SYNC
 
-  inline Time now()
-  {
-    return from(Win32::now());
-  }
-}
+#ifndef AJ_NO_DISPATCH
+#  include "Dispatch/Dispatch.h"
+#  include "Dispatch/Proxy.h"
+#endif // ndef AJ_NO_DISPATCH
 
-// JScript timestamps
-namespace JScript {
-  // note that we are flooring incoming integer values.
-  inline Time from(const Win32::Time & aOther)
-  {
-    return (Time)(((Time)aOther - EPOCH_DIFF) / RATE_DIFF_JS);
-  }
+#ifndef AJ_NO_DISPATCHEX
+#  ifdef AJ_NO_DISPATCH
+#    error When using the IDispatchEx-functions you also have to enable the IDispatch-functions.
+#  endif // def AJ_NO_DISPATCH
+#  include "Dispatch/Ex/Ex.h"
+#  include "Dispatch/Ex/Proxy.h"
+#endif // ndef AJ_NO_DISPATCHEX
 
-  inline Time from(const Unix::Time & aOther)
-  {
-    return (Time)((Time)aOther * RATE_DIFF_S_JS);
-  }
-
-  inline Time now()
-  {
-    return from(Win32::now());
-  }
-}
-
-} //namespace Time
-} //namespace Ancho
+#ifndef AJ_NO_GLOBALINTERFACETABLE
+#  include "GlobalInterface/GlobalInterface.h"
+#endif // ndef AJ_NO_GLOBALINTERFACETABLE

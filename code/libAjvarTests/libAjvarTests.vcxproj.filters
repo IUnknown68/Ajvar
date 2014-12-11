@@ -7,13 +7,23 @@
     <Filter Include="mocks">
       <UniqueIdentifier>{697C4C35-2559-4A76-863F-E84C21FD0977}</UniqueIdentifier>
     </Filter>
-    <Filter Include="data">
-      <UniqueIdentifier>{4D93EAAA-E90C-4E52-ABA6-4A7DF7F5993A}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="libAjvarTests\ajvarTest.cpp">
+    <ClCompile Include="src\PropertiesTest.cpp">
       <Filter>tests</Filter>
     </ClCompile>
+    <ClCompile Include="src\TimeTest.cpp">
+      <Filter>tests</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DebugTest.cpp">
+      <Filter>tests</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AtlModule.cpp" />
+    <ClCompile Include="src\GlobalInterfaceTest.cpp">
+      <Filter>tests</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\AtlModule.h" />
   </ItemGroup>
 </Project>
