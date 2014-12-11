@@ -1,0 +1,3 @@
+- SAFEARRAY handling
+- enumerating arrays
+- [] operator for numbers (array indexes)
